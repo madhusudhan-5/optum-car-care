@@ -105,7 +105,7 @@ export default async function Home() {
     return (
       <div className="min-h-screen flex flex-col items-center justify-center bg-[#0a0a0a] text-white p-6 text-center">
         <div className="w-16 h-16 border-4 border-primary border-t-transparent rounded-full animate-spin mb-8"></div>
-        <h2 className="text-3xl font-heading font-black text-primary uppercase tracking-widest mb-4">Connecting to Atelier...</h2>
+        <h2 className="text-3xl font-heading font-black text-primary uppercase tracking-widest mb-4">Connecting to Optum Car Care...</h2>
         <p className="text-gray-400 max-w-md">Please ensure the backend server is running and the database has been populated.</p>
       </div>
     );
