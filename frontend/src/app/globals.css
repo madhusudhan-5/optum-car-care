@@ -1,0 +1,110 @@
+@import "tailwindcss";
+
+@theme inline {
+  --color-primary: #f5b301;
+  --color-background-dark: #0a0a0a;
+  --color-background-card: #151515;
+  --color-foreground: #ededed;
+  
+  --font-sans: var(--font-inter);
+  --font-heading: var(--font-montserrat);
+}
+
+:root {
+  --background: var(--color-background-dark);
+  --foreground: var(--color-foreground);
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  overflow-x: hidden;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-heading);
+}
+
+/* GORGEOUS KEYFRAME ANIMATIONS FOR LUXURY DESIGN FEEL */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes glowPulse {
+  0%, 100% {
+    box-shadow: 0 0 15px rgba(245, 179, 1, 0.15);
+  }
+  50% {
+    box-shadow: 0 0 25px rgba(245, 179, 1, 0.35);
+  }
+}
+
+@keyframes sheenShimmer {
+  from {
+    transform: translateX(-100%) rotate(45deg);
+  }
+  to {
+    transform: translateX(100%) rotate(45deg);
+  }
+}
+
+/* UTILITY ANIMATION CLASSES */
+.animate-fade-in-up {
+  animation: fadeInUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.animate-fade-in {
+  animation: fadeIn 1s ease-out forwards;
+}
+
+.animate-glow-pulse {
+  animation: glowPulse 3s infinite ease-in-out;
+}
+
+.hover-glow:hover {
+  box-shadow: 0 0 20px rgba(245, 179, 1, 0.25);
+  border-color: rgba(245, 179, 1, 0.4);
+}
+
+.sheen-container {
+  position: relative;
+  overflow: hidden;
+}
+
+.sheen-container::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 50%;
+  height: 100%;
+  background: linear-gradient(
+    to right,
+    transparent,
+    rgba(255, 255, 255, 0.13) 50%,
+    transparent
+  );
+  transform: skewX(-25deg);
+  transition: 0.75s;
+}
+
+.sheen-container:hover::after {
+  left: 125%;
+}
+.mask-image-gradient-l { mask-image: linear-gradient(to left, black, transparent); -webkit-mask-image: linear-gradient(to left, black, transparent); }
