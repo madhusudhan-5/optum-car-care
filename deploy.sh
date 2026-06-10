@@ -14,7 +14,7 @@ if [ -z "$DOMAIN" ]; then
     exit 1
 fi
 
-GITHUB_REPO="https://github.com/madhusudhan-5/optum-car-care.git"
+GITHUB_REPO="https://madhusudhan-5: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@github.com/madhusudhan-5/optum-car-care.git"
 APP_DIR="/var/www/optum-car-care"
 
 echo "Updating system and installing dependencies..."
