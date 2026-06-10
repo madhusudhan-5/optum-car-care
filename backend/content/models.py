@@ -61,6 +61,10 @@ class HomePageConfig(models.Model):
     # Google Reviews
     review_count = models.CharField(max_length=20, default="205")
     review_rating = models.CharField(max_length=10, default="5.0")
+    google_review_link = models.URLField(max_length=500, blank=True, null=True, help_text="Link to your Google Reviews page")
+
+    # WhatsApp Specific
+    whatsapp_number = models.CharField(max_length=50, blank=True, null=True, help_text="Override the default phone number for WhatsApp. Keep empty to use the main phone number.")
 
     def __str__(self):
         return "Home Page Configuration"
