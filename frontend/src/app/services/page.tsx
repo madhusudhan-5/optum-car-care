@@ -15,8 +15,8 @@ async function getServices() {
 const getImageUrl = (path: string) => {
   if (!path) return '';
   if (path.startsWith('http')) return path;
-  if (path.startsWith('/')) return `http://127.0.0.1:8000${path}`;
-  return `http://127.0.0.1:8000/media/${path}`;
+  if (path.startsWith('/')) return `${path}`;
+  return `/media/${path}`;
 };
 
 // Helper function to extract YouTube ID

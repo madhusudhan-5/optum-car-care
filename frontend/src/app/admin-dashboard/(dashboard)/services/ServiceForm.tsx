@@ -9,7 +9,7 @@ import Toast from '@/components/Toast';
 interface Feature { title: string; description: string; }
 interface FAQ { question: string; answer: string; }
 
-const DJANGO_BASE = 'http://127.0.0.1:8000';
+const DJANGO_BASE = '';
 
 function getImageSrc(path: string | null | undefined) {
   if (!path) return null;

@@ -5,7 +5,7 @@ import { updateHomeConfig, uploadHomeConfigImage } from '@/actions/admin';
 import { useRouter } from 'next/navigation';
 import Toast from '@/components/Toast';
 
-const DJANGO_BASE = 'http://127.0.0.1:8000';
+const DJANGO_BASE = '';
 
 function getImageSrc(path: string | null | undefined) {
   if (!path) return null;
