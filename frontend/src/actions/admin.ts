@@ -35,7 +35,7 @@ export async function updateHomeConfig(id: number, data: any) {
     });
 
     if (res.ok) {
-      revalidatePath('/');
+      revalidatePath('/', 'layout');
       return { success: true };
     }
 
