@@ -24,6 +24,11 @@ fi
 GITHUB_REPO="https://madhusudhan-5:${GITHUB_TOKEN}@github.com/madhusudhan-5/optum-car-care.git"
 APP_DIR="/var/www/optum-car-care"
 
+echo "Cleaning up old processes..."
+sudo killall node || true
+sudo killall gunicorn || true
+pm2 delete all || true
+
 echo "Updating system and installing dependencies..."
 sudo apt update
 sudo apt upgrade -y
@@ -62,8 +67,16 @@ python manage.py migrate
 python manage.py collectstatic --noinput
 
 echo "Configuring PM2 for Backend..."
+# Create a wrapper script so PM2 executes it as Bash, not Node.js
+cat << 'EOF' > $APP_DIR/backend/start_gunicorn.sh
+#!/bin/bash
+source venv/bin/activate
+exec gunicorn --workers 3 --bind 127.0.0.1:8000 config.wsgi:application
+EOF
+chmod +x $APP_DIR/backend/start_gunicorn.sh
+
 # Start Backend first so Next.js can fetch data during build
-pm2 start "$APP_DIR/backend/venv/bin/gunicorn" --name "optum-backend" -- --workers 3 --bind 127.0.0.1:8000 config.wsgi:application --chdir $APP_DIR/backend
+pm2 start $APP_DIR/backend/start_gunicorn.sh --name "optum-backend"
 
 echo "Setting up Frontend (Next.js)..."
 cd $APP_DIR/frontend
