@@ -26,6 +26,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
 // Helper to get full image URL
 const getImageUrl = (path: string | undefined | null) => {
   if (!path) return '';
+  if (path.startsWith('http://127.0.0.1:8000')) path = path.replace('http://127.0.0.1:8000', '');
   if (path.startsWith('http')) return path;
   if (path.startsWith('/')) return `${path}`;
   return `/media/${path}`;

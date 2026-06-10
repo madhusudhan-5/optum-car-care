@@ -9,6 +9,7 @@ const DJANGO_BASE = '';
 
 function getImageSrc(path: string | null | undefined) {
   if (!path) return null;
+  if (path.startsWith('http://127.0.0.1:8000')) path = path.replace('http://127.0.0.1:8000', '');
   if (path.startsWith('http')) return path;
   return `${DJANGO_BASE}${path.startsWith('/') ? '' : '/media/'}${path}`;
 }
