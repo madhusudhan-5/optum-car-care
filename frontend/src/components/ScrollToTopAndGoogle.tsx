@@ -2,8 +2,9 @@
 
 import React, { useState, useEffect } from 'react';
 
-export default function ScrollToTopAndGoogle({ phone = '' }: { phone?: string }) {
+export default function ScrollToTopAndGoogle({ config }: { config: any }) {
   const [isVisible, setIsVisible] = useState(false);
+  const phone = config?.phone || '';
 
   useEffect(() => {
     const toggleVisibility = () => {
@@ -29,7 +30,7 @@ export default function ScrollToTopAndGoogle({ phone = '' }: { phone?: string })
   const waLink = `https://wa.me/${formattedPhone.replace('+', '')}`;
   const telLink = `tel:${formattedPhone}`;
   // Direct link to Google Reviews
-  const googleReviewLink = 'https://search.google.com/local/writereview?placeid=ChIJoZfh5tAVrjsROO2SSv288oQ';
+  const googleReviewLink = config?.google_review_link || 'https://search.google.com/local/writereview?placeid=ChIJoZfh5tAVrjsROO2SSv288oQ';
 
   return (
     <div className="fixed bottom-6 right-6 z-40 flex flex-col gap-3 items-end font-heading">
@@ -99,9 +100,9 @@ export default function ScrollToTopAndGoogle({ phone = '' }: { phone?: string })
         <div className="flex flex-col items-start leading-tight">
           <div className="text-[10px] text-gray-400 font-extrabold tracking-widest uppercase">Reviews on Google</div>
           <div className="flex items-center gap-1.5 mt-0.5">
-            <span className="text-white text-xs font-black">5.0</span>
+            <span className="text-white text-xs font-black">{config?.review_rating || '5.0'}</span>
             <span className="text-yellow-400 text-[10px]">★★★★★</span>
-            <span className="text-[9px] text-gray-500 font-bold uppercase tracking-wider">(205+)</span>
+            <span className="text-[9px] text-gray-500 font-bold uppercase tracking-wider">({config?.review_count || '205'}+)</span>
           </div>
         </div>
       </a>

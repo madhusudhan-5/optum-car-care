@@ -170,6 +170,8 @@ export default function HomeConfigForm({ initialConfig }: { initialConfig: any }
       meta_title: formData.get('meta_title') || null,
       meta_description: formData.get('meta_description') || null,
       meta_keywords: formData.get('meta_keywords') || null,
+      whatsapp_number: formData.get('whatsapp_number') || null,
+      google_review_link: formData.get('google_review_link') || null,
       pain_points: painPoints.filter(text => text.trim() !== '').map(text => ({ text })),
       standard_items: standardItems.filter(text => text.trim() !== '').map(text => ({ text })),
       about_features: aboutFeatures.filter(text => text.trim() !== '').map(text => ({ text })),
@@ -435,6 +437,34 @@ export default function HomeConfigForm({ initialConfig }: { initialConfig: any }
               <button type="button" onClick={addAboutFeature}
                 className="mt-2 text-primary font-bold text-xs uppercase tracking-wider hover:underline">+ Add Highlight Feature</button>
             </div>
+          </div>
+        </div>
+      </div>
+
+      {/* Contact & Integrations Section */}
+      <div className="border-b border-gray-200 pb-6">
+        <h3 className="text-lg font-semibold text-gray-900 mb-4 uppercase tracking-wider text-sm border-l-4 border-primary pl-2">Contact & Integration Links</h3>
+        <div className="grid grid-cols-1 gap-6">
+          <div>
+            <label className="block text-sm font-medium text-gray-700">Main Phone Number</label>
+            <input type="text" name="phone" defaultValue={initialConfig.phone || ''}
+              placeholder="e.g. 651-706-9995"
+              className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-primary focus:border-primary sm:text-sm bg-gray-50 text-gray-900" />
+            <p className="mt-1 text-xs text-gray-500">This number powers the "Call Us" button and header.</p>
+          </div>
+          <div>
+            <label className="block text-sm font-medium text-gray-700">WhatsApp Override Number (Optional)</label>
+            <input type="text" name="whatsapp_number" defaultValue={initialConfig.whatsapp_number || ''}
+              placeholder="e.g. +16517069995"
+              className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-primary focus:border-primary sm:text-sm bg-gray-50 text-gray-900" />
+            <p className="mt-1 text-xs text-gray-500">If provided, the WhatsApp button will use this instead of the Main Phone Number.</p>
+          </div>
+          <div>
+            <label className="block text-sm font-medium text-gray-700">Google Reviews URL</label>
+            <input type="url" name="google_review_link" defaultValue={initialConfig.google_review_link || ''}
+              placeholder="https://search.google.com/local/writereview?placeid=..."
+              className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-primary focus:border-primary sm:text-sm bg-gray-50 text-gray-900" />
+            <p className="mt-1 text-xs text-gray-500">The link users are taken to when they click the floating Google Reviews badge.</p>
           </div>
         </div>
       </div>

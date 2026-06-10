@@ -4,11 +4,13 @@ import React from 'react';
 
 interface FloatingContactProps {
   phone: string;
+  whatsapp_number?: string | null;
 }
 
-export default function FloatingContact({ phone }: FloatingContactProps) {
+export default function FloatingContact({ phone, whatsapp_number }: FloatingContactProps) {
   // Format phone number for links (remove spaces and non-numeric except +)
   const cleanPhone = phone?.replace(/[^\d+]/g, '') || '';
+  const cleanWhatsApp = whatsapp_number ? whatsapp_number.replace(/[^\d+]/g, '') : cleanPhone;
   
   if (!cleanPhone) return null;
 
@@ -16,7 +18,7 @@ export default function FloatingContact({ phone }: FloatingContactProps) {
     <div className="fixed bottom-6 left-6 z-50 flex flex-col gap-4">
       {/* WhatsApp Button */}
       <a
-        href={`https://wa.me/${cleanPhone.replace('+', '')}`}
+        href={`https://wa.me/${cleanWhatsApp.replace('+', '')}`}
         target="_blank"
         rel="noopener noreferrer"
         className="w-14 h-14 bg-[#25D366] text-white rounded-full flex items-center justify-center shadow-2xl hover:scale-110 transition-transform duration-300"
