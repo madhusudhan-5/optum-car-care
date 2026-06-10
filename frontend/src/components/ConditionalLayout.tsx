@@ -8,6 +8,7 @@ interface ConditionalLayoutProps {
   navbar: React.ReactNode;
   footer: React.ReactNode;
   scrollHelper: React.ReactNode;
+  floatingContact?: React.ReactNode;
 }
 
 export default function ConditionalLayout({
@@ -15,6 +16,7 @@ export default function ConditionalLayout({
   navbar,
   footer,
   scrollHelper,
+  floatingContact,
 }: ConditionalLayoutProps) {
   const pathname = usePathname();
   
@@ -29,6 +31,7 @@ export default function ConditionalLayout({
     <>
       {navbar}
       <main className="flex-grow">{children}</main>
+      {floatingContact}
       {footer}
       {scrollHelper}
     </>
