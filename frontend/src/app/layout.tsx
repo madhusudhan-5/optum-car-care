@@ -52,8 +52,8 @@ export default async function RootLayout({
         <ConditionalLayout
           navbar={<Navbar />}
           footer={<Footer />}
-          scrollHelper={<ScrollToTopAndGoogle phone={phone} />}
-          floatingContact={<FloatingContact phone={phone} />}
+          scrollHelper={<ScrollToTopAndGoogle config={config} />}
+          floatingContact={<FloatingContact phone={phone} whatsapp_number={config?.whatsapp_number} />}
         >
           {children}
         </ConditionalLayout>
