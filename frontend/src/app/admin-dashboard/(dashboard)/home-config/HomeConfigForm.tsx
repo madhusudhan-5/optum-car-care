@@ -170,8 +170,16 @@ export default function HomeConfigForm({ initialConfig }: { initialConfig: any }
       meta_title: formData.get('meta_title') || null,
       meta_description: formData.get('meta_description') || null,
       meta_keywords: formData.get('meta_keywords') || null,
+      phone: formData.get('phone') || null,
       whatsapp_number: formData.get('whatsapp_number') || null,
       google_review_link: formData.get('google_review_link') || null,
+      email: formData.get('email') || null,
+      address: formData.get('address') || null,
+      working_hours_mon_fri: formData.get('working_hours_mon_fri') || null,
+      working_hours_sat: formData.get('working_hours_sat') || null,
+      working_hours_sun: formData.get('working_hours_sun') || null,
+      review_count: formData.get('review_count') || null,
+      review_rating: formData.get('review_rating') || null,
       pain_points: painPoints.filter(text => text.trim() !== '').map(text => ({ text })),
       standard_items: standardItems.filter(text => text.trim() !== '').map(text => ({ text })),
       about_features: aboutFeatures.filter(text => text.trim() !== '').map(text => ({ text })),
@@ -460,11 +468,60 @@ export default function HomeConfigForm({ initialConfig }: { initialConfig: any }
             <p className="mt-1 text-xs text-gray-500">If provided, the WhatsApp button will use this instead of the Main Phone Number.</p>
           </div>
           <div>
+            <label className="block text-sm font-medium text-gray-700">Email Address</label>
+            <input type="email" name="email" defaultValue={initialConfig.email || ''}
+              placeholder="e.g. info@optumcarcare.com"
+              className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-primary focus:border-primary sm:text-sm bg-gray-50 text-gray-900" />
+          </div>
+          <div>
+            <label className="block text-sm font-medium text-gray-700">Physical Address</label>
+            <input type="text" name="address" defaultValue={initialConfig.address || ''}
+              placeholder="e.g. 726, 9th Main Hongasandra GB Palya Rd..."
+              className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-primary focus:border-primary sm:text-sm bg-gray-50 text-gray-900" />
+          </div>
+          <div>
             <label className="block text-sm font-medium text-gray-700">Google Reviews URL</label>
             <input type="url" name="google_review_link" defaultValue={initialConfig.google_review_link || ''}
               placeholder="https://search.google.com/local/writereview?placeid=..."
               className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-primary focus:border-primary sm:text-sm bg-gray-50 text-gray-900" />
             <p className="mt-1 text-xs text-gray-500">The link users are taken to when they click the floating Google Reviews badge.</p>
+          </div>
+          <div>
+            <label className="block text-sm font-medium text-gray-700">Google Review Rating (e.g., 5.0)</label>
+            <input type="text" name="review_rating" defaultValue={initialConfig.review_rating || ''}
+              placeholder="5.0"
+              className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-primary focus:border-primary sm:text-sm bg-gray-50 text-gray-900" />
+          </div>
+          <div>
+            <label className="block text-sm font-medium text-gray-700">Google Review Count (e.g., 205)</label>
+            <input type="text" name="review_count" defaultValue={initialConfig.review_count || ''}
+              placeholder="205"
+              className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-primary focus:border-primary sm:text-sm bg-gray-50 text-gray-900" />
+          </div>
+        </div>
+      </div>
+
+      {/* OptumCarCare Hours Section */}
+      <div className="border-b border-gray-200 pb-6">
+        <h3 className="text-lg font-semibold text-gray-900 mb-4 uppercase tracking-wider text-sm border-l-4 border-primary pl-2">Working Hours</h3>
+        <div className="grid grid-cols-1 gap-6">
+          <div>
+            <label className="block text-sm font-medium text-gray-700">Monday - Friday Hours</label>
+            <input type="text" name="working_hours_mon_fri" defaultValue={initialConfig.working_hours_mon_fri || ''}
+              placeholder="e.g. 10:00 AM to 6:00 PM (Appointment Only)"
+              className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-primary focus:border-primary sm:text-sm bg-gray-50 text-gray-900" />
+          </div>
+          <div>
+            <label className="block text-sm font-medium text-gray-700">Saturday Hours</label>
+            <input type="text" name="working_hours_sat" defaultValue={initialConfig.working_hours_sat || ''}
+              placeholder="e.g. 11:00 AM to 2:00 PM (Appointment Only)"
+              className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-primary focus:border-primary sm:text-sm bg-gray-50 text-gray-900" />
+          </div>
+          <div>
+            <label className="block text-sm font-medium text-gray-700">Sunday Hours</label>
+            <input type="text" name="working_hours_sun" defaultValue={initialConfig.working_hours_sun || ''}
+              placeholder="e.g. Closed"
+              className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-primary focus:border-primary sm:text-sm bg-gray-50 text-gray-900" />
           </div>
         </div>
       </div>

@@ -47,7 +47,7 @@ export default async function Footer() {
         </div>
 
         <div>
-          <h4 className="font-heading font-black uppercase tracking-wider text-xs mb-6 text-primary">Contact Atelier</h4>
+          <h4 className="font-heading font-black uppercase tracking-wider text-xs mb-6 text-primary">Contact OptumCarCare</h4>
           <ul className="space-y-3.5 text-xs text-gray-400 font-bold uppercase tracking-wider leading-relaxed">
             <li className="normal-case font-medium">{config.address}</li>
             <li>Phone: <span className="text-white font-medium">{config.phone}</span></li>
@@ -56,7 +56,7 @@ export default async function Footer() {
         </div>
 
         <div>
-          <h4 className="font-heading font-black uppercase tracking-wider text-xs mb-6 text-primary">Atelier Hours</h4>
+          <h4 className="font-heading font-black uppercase tracking-wider text-xs mb-6 text-primary">OptumCarCare Hours</h4>
           <ul className="space-y-3.5 text-xs text-gray-400 font-bold uppercase tracking-wider">
             <li className="flex justify-between gap-4"><span>Mon - Fri</span><span className="text-white font-medium text-right lowercase">{config.working_hours_mon_fri}</span></li>
             <li className="flex justify-between gap-4"><span>Saturday</span><span className="text-white font-medium text-right lowercase">{config.working_hours_sat}</span></li>
