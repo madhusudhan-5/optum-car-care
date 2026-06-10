@@ -5,7 +5,6 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import ScrollToTopAndGoogle from "@/components/ScrollToTopAndGoogle";
 import ConditionalLayout from "@/components/ConditionalLayout";
-import FloatingContact from "@/components/FloatingContact";
 
 const inter = Inter({
   variable: "--font-inter",
@@ -53,7 +52,6 @@ export default async function RootLayout({
           navbar={<Navbar />}
           footer={<Footer />}
           scrollHelper={<ScrollToTopAndGoogle config={config} />}
-          floatingContact={<FloatingContact phone={phone} whatsapp_number={config?.whatsapp_number} />}
         >
           {children}
         </ConditionalLayout>
