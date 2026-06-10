@@ -14,7 +14,14 @@ if [ -z "$DOMAIN" ]; then
     exit 1
 fi
 
-GITHUB_REPO="https://madhusudhan-5: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@github.com/madhusudhan-5/optum-car-care.git"
+# Ask for GitHub Token
+read -p "Enter your GitHub Personal Access Token (for private repo clone): " GITHUB_TOKEN
+if [ -z "$GITHUB_TOKEN" ]; then
+    echo "Token cannot be empty!"
+    exit 1
+fi
+
+GITHUB_REPO="https://madhusudhan-5:${GITHUB_TOKEN}@github.com/madhusudhan-5/optum-car-care.git"
 APP_DIR="/var/www/optum-car-care"
 
 echo "Updating system and installing dependencies..."
@@ -77,6 +84,19 @@ sudo bash -c "cat > $NGINX_CONF <<EOF
 server {
     listen 80;
     server_name $DOMAIN www.$DOMAIN;
+    return 301 https://\\\$host\\\$request_uri;
+}
+
+server {
+    listen 443 ssl;
+    server_name $DOMAIN www.$DOMAIN;
+
+    ssl_certificate /etc/ssl/certs/optum_custom.crt;
+    ssl_certificate_key /etc/ssl/private/optum_custom.key;
+    
+    # Recommended SSL settings
+    ssl_protocols TLSv1.2 TLSv1.3;
+    ssl_ciphers HIGH:!aNULL:!MD5;
 
     # Django Media
     location /media/ {
@@ -116,10 +136,7 @@ sudo rm -f /etc/nginx/sites-enabled/default
 # Test and reload Nginx
 sudo nginx -t
 sudo systemctl reload nginx
-
-echo "Setting up SSL with Certbot..."
-echo "This will install a free Let's Encrypt SSL certificate that auto-renews."
-sudo certbot --nginx -d $DOMAIN -d www.$DOMAIN --non-interactive --agree-tos --email admin@$DOMAIN || echo "Certbot failed. You may need to manually configure it or check DNS propagation."
+echo "SSL configuration complete. Ensure your custom certificate files are placed in /etc/ssl/certs/optum_custom.crt and /etc/ssl/private/optum_custom.key"
 
 echo "==========================================================="
 echo "Deployment Complete!"
