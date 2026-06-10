@@ -61,15 +61,17 @@ pip install gunicorn
 python manage.py migrate
 python manage.py collectstatic --noinput
 
+echo "Configuring PM2 for Backend..."
+# Start Backend first so Next.js can fetch data during build
+pm2 start "$APP_DIR/backend/venv/bin/gunicorn" --name "optum-backend" -- --workers 3 --bind 127.0.0.1:8000 config.wsgi:application --chdir $APP_DIR/backend
+
 echo "Setting up Frontend (Next.js)..."
 cd $APP_DIR/frontend
 npm install
 npm run build
 
-echo "Configuring PM2..."
+echo "Configuring PM2 for Frontend..."
 cd $APP_DIR
-# Start Backend
-pm2 start "$APP_DIR/backend/venv/bin/gunicorn" --name "optum-backend" -- --workers 3 --bind 127.0.0.1:8000 config.wsgi:application --chdir $APP_DIR/backend
 # Start Frontend
 pm2 start npm --name "optum-frontend" --cwd $APP_DIR/frontend -- start
 
