@@ -6,6 +6,7 @@ class Service(models.Model):
     tag_line = models.CharField(max_length=200, blank=True)
     hero_description = models.TextField()
     hero_image = models.ImageField(upload_to='services/hero/', blank=True, null=True)
+    youtube_video_url = models.URLField(blank=True, null=True, help_text="YouTube URL to autoplay in the home page service card (e.g., https://www.youtube.com/watch?v=dQw4w9WgXcQ)")
     
     # Craft Manifesto
     manifesto_title = models.CharField(max_length=200, default="THE ART OF THE INSTALL")

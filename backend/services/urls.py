@@ -6,12 +6,12 @@ from .views import (
 )
 
 router = DefaultRouter()
-router.register(r'', ServiceViewSet)
 router.register(r'features', ServiceFeatureViewSet)
 router.register(r'before-afters', ServiceBeforeAfterViewSet)
 router.register(r'faqs', ServiceFAQViewSet)
 router.register(r'standards', ServiceStandardItemViewSet)
 router.register(r'config', ServicesPageConfigViewSet)
+router.register(r'', ServiceViewSet)
 
 urlpatterns = [
     path('', include(router.urls)),
