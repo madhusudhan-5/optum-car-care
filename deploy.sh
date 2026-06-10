@@ -84,19 +84,6 @@ sudo bash -c "cat > $NGINX_CONF <<EOF
 server {
     listen 80;
     server_name $DOMAIN www.$DOMAIN;
-    return 301 https://\\\$host\\\$request_uri;
-}
-
-server {
-    listen 443 ssl;
-    server_name $DOMAIN www.$DOMAIN;
-
-    ssl_certificate /etc/ssl/certs/optum_custom.crt;
-    ssl_certificate_key /etc/ssl/private/optum_custom.key;
-    
-    # Recommended SSL settings
-    ssl_protocols TLSv1.2 TLSv1.3;
-    ssl_ciphers HIGH:!aNULL:!MD5;
 
     # Django Media
     location /media/ {
@@ -136,7 +123,10 @@ sudo rm -f /etc/nginx/sites-enabled/default
 # Test and reload Nginx
 sudo nginx -t
 sudo systemctl reload nginx
-echo "SSL configuration complete. Ensure your custom certificate files are placed in /etc/ssl/certs/optum_custom.crt and /etc/ssl/private/optum_custom.key"
+
+echo "Setting up SSL with Certbot..."
+echo "This will install a free Let's Encrypt SSL certificate that auto-renews."
+sudo certbot --nginx -d $DOMAIN -d www.$DOMAIN --non-interactive --agree-tos --email admin@$DOMAIN || echo "Certbot failed. You may need to manually configure it or check DNS propagation."
 
 echo "==========================================================="
 echo "Deployment Complete!"
