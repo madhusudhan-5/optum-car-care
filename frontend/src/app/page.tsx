@@ -152,7 +152,7 @@ export default async function Home() {
           </Link>
           <div className="flex items-center gap-2 mt-4 text-xs text-gray-500 font-bold uppercase tracking-wider">
             <span className="text-yellow-400 text-base">★★★★★</span>
-            5.0 STARS, 205 Google REVIEWS
+            {config.review_rating || '5.0'} STARS, {config.review_count || '205'} Google REVIEWS
           </div>
         </ScrollReveal>
       </section>
@@ -442,7 +442,7 @@ export default async function Home() {
                 </li>
               ))}
             </ul>
-            <Link href="/about" className="border border-primary text-primary hover:bg-primary hover:text-black transition-all duration-300 px-10 py-5 uppercase font-black tracking-widest rounded-full text-xs inline-block">
+            <Link href="/process" className="border border-primary text-primary hover:bg-primary hover:text-black transition-all duration-300 px-10 py-5 uppercase font-black tracking-widest rounded-full text-xs inline-block">
               Learn More
             </Link>
           </ScrollReveal>
