@@ -50,13 +50,27 @@ class HomePageConfig(models.Model):
     stat_3_number = models.CharField(max_length=50, default="30+")
     stat_3_text = models.CharField(max_length=100, default="Certified & Trusted Experts")
 
-    # Dynamic Contact Details & Working Hours
     address = models.CharField(max_length=255, default="4444 W 70th St, Edina, MN 55435")
     phone = models.CharField(max_length=50, default="651-706-9995")
     email = models.EmailField(default="info@optumcarcare.com")
     working_hours_mon_fri = models.CharField(max_length=150, default="10:00 AM to 6:00 PM (Appointment Only)")
     working_hours_sat = models.CharField(max_length=150, default="11:00 AM to 2:00 PM (Appointment Only)")
     working_hours_sun = models.CharField(max_length=150, default="Closed")
+
+    # Dynamic Section Headers (Eyebrows and Titles)
+    intro_eyebrow = models.CharField(max_length=200, default="You Want the Best for What Matters")
+    services_eyebrow = models.CharField(max_length=200, default="Our Expertise")
+    services_title = models.CharField(max_length=200, default="Mastery in Every Detail")
+    services_description = models.TextField(default="From meticulous paint correction to cutting-edge ceramic protection, our comprehensive suite of services ensures your vehicle remains in concourse condition.")
+    standard_eyebrow = models.CharField(max_length=200, default="The Standard")
+    makes_eyebrow = models.CharField(max_length=200, default="Trusted By Owners Of")
+    makes_title = models.CharField(max_length=200, default="World-Class Engineering")
+    partners_eyebrow = models.CharField(max_length=200, default="Our Partners & Certified Installers")
+    partners_title = models.CharField(max_length=200, default="Industry Standard Products")
+    testimonials_eyebrow = models.CharField(max_length=200, default="Client Experiences")
+    testimonials_title = models.CharField(max_length=200, default="Words From Our Patrons")
+    faqs_eyebrow = models.CharField(max_length=200, default="Knowledge Base")
+    faqs_title = models.CharField(max_length=200, default="Frequently Asked Questions")
 
     # Google Reviews
     review_count = models.CharField(max_length=20, default="205")

@@ -209,7 +209,7 @@ export default async function Home() {
       <section className="bg-[#111] text-white py-28 px-6 md:px-12 border-t border-white/5 relative">
         <div className="max-w-7xl mx-auto flex flex-col md:flex-row gap-20 items-center">
           <ScrollReveal direction="left" duration={1000} className="flex-1">
-            <span className="text-primary font-black tracking-widest uppercase text-xs mb-4 block">You Want the Best for What Matters</span>
+            <span className="text-primary font-black tracking-widest uppercase text-xs mb-4 block">{config.intro_eyebrow || 'You Want the Best for What Matters'}</span>
             <h2 className="text-4xl md:text-5xl font-heading font-black mb-8 uppercase leading-none text-white">
               {config.intro_title}
             </h2>
@@ -256,7 +256,7 @@ export default async function Home() {
           <div className="max-w-7xl mx-auto">
             <div className="text-center mb-16">
               <span className="text-primary font-black tracking-widest uppercase text-xs mb-4 block">Specialists in EV's & Exotics</span>
-              <h2 className="text-4xl md:text-6xl font-heading font-black uppercase leading-none">Services Curated by Makes</h2>
+              <h2 className="text-4xl md:text-6xl font-heading font-black uppercase leading-none">{config.makes_title || 'Services Curated by Makes'}</h2>
             </div>
 
             <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
@@ -316,8 +316,8 @@ export default async function Home() {
         <section className="bg-[#080808] py-28 px-6 md:px-12 border-b border-white/5 text-white">
           <div className="max-w-7xl mx-auto text-center">
             <ScrollReveal direction="down">
-              <span className="text-primary font-black tracking-widest uppercase text-xs mb-4 block">Our Partners & Certified Installers</span>
-              <h2 className="text-3xl md:text-5xl font-heading font-black uppercase mb-8">Industry Standard Products</h2>
+              <span className="text-primary font-black tracking-widest uppercase text-xs mb-4 block">{config.partners_eyebrow || 'Our Partners & Certified Installers'}</span>
+              <h2 className="text-3xl md:text-5xl font-heading font-black uppercase mb-8">{config.partners_title || 'Industry Standard Products'}</h2>
               <p className="text-gray-400 max-w-3xl mx-auto mb-16 leading-relaxed font-medium text-lg">
                 {config.partners_description}
               </p>
@@ -348,8 +348,8 @@ export default async function Home() {
       <section className="bg-[#0a0a0a] text-white py-28 px-6 md:px-12 border-b border-white/5 relative">
         <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-20 items-center">
           <ScrollReveal direction="left" duration={1000}>
-            <span className="text-primary font-black tracking-widest uppercase text-xs mb-4 block">THE STANDARD</span>
-            <h2 className="text-4xl md:text-6xl font-heading font-black mb-8 uppercase leading-none text-white">
+            <span className="text-primary font-black tracking-widest uppercase text-xs mb-4 block">{config.standard_eyebrow || 'The Standard'}</span>
+            <h2 className="text-4xl md:text-5xl font-heading font-black mb-8 uppercase leading-tight text-white">
               {config.standard_title}
             </h2>
             <p className="text-gray-400 text-lg leading-relaxed mb-10 font-medium">
@@ -382,8 +382,8 @@ export default async function Home() {
         <section className="bg-black text-white py-28 px-6 md:px-12 border-b border-white/5">
           <div className="max-w-7xl mx-auto">
             <div className="text-center mb-20">
-              <span className="text-primary font-black tracking-widest uppercase text-sm mb-4 block">Reviews</span>
-              <h2 className="text-4xl md:text-6xl font-heading font-black uppercase leading-none">What Our Customers Think</h2>
+              <span className="text-primary font-black tracking-widest uppercase text-sm mb-4 block">{config.testimonials_eyebrow || 'Reviews'}</span>
+              <h2 className="text-4xl md:text-6xl font-heading font-black uppercase leading-none">{config.testimonials_title || 'What Our Customers Think'}</h2>
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
@@ -471,10 +471,10 @@ export default async function Home() {
       {faqs.length > 0 && (
         <section className="bg-[#080808] text-white py-28 px-6 md:px-12 border-t border-white/5 relative">
           <div className="max-w-4xl mx-auto">
-            <div className="text-center mb-20">
-              <span className="text-primary font-black tracking-widest uppercase text-sm mb-4 block">Knowledge Base</span>
-              <h2 className="text-4xl md:text-6xl font-heading font-black uppercase leading-none">Frequently Asked Questions</h2>
-            </div>
+            <ScrollReveal className="max-w-7xl mx-auto text-center mb-20">
+              <h2 className="text-sm font-black text-primary tracking-[0.3em] uppercase mb-4">{config.faqs_eyebrow || 'Knowledge Base'}</h2>
+              <h3 className="text-3xl sm:text-4xl md:text-5xl font-heading font-black uppercase">{config.faqs_title || 'Frequently Asked Questions'}</h3>
+            </ScrollReveal>
 
             <div className="space-y-4">
               {faqs.map((faq: any, idx: number) => (

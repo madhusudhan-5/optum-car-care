@@ -152,6 +152,22 @@ export default function HomeConfigForm({ initialConfig }: { initialConfig: any }
 
     const formData = new FormData(e.currentTarget);
     const payload = {
+      
+      intro_eyebrow: formData.get('intro_eyebrow'),
+      intro_title: formData.get('intro_title'),
+      intro_description: formData.get('intro_description'),
+      services_eyebrow: formData.get('services_eyebrow'),
+      services_title: formData.get('services_title'),
+      services_description: formData.get('services_description'),
+      makes_eyebrow: formData.get('makes_eyebrow'),
+      makes_title: formData.get('makes_title'),
+      testimonials_eyebrow: formData.get('testimonials_eyebrow'),
+      testimonials_title: formData.get('testimonials_title'),
+      faqs_eyebrow: formData.get('faqs_eyebrow'),
+      faqs_title: formData.get('faqs_title'),
+      partners_eyebrow: formData.get('partners_eyebrow'),
+      partners_title: formData.get('partners_title'),
+      partners_description: formData.get('partners_description'),
       hero_title: formData.get('hero_title'),
       hero_subtitle: formData.get('hero_subtitle'),
       vehicles_protected: formData.get('vehicles_protected'),
@@ -315,6 +331,79 @@ export default function HomeConfigForm({ initialConfig }: { initialConfig: any }
             <label className="block text-sm font-medium text-gray-700">Vehicles Protected Count (text)</label>
             <input type="text" name="vehicles_protected" defaultValue={initialConfig.vehicles_protected} required
               className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-primary focus:border-primary sm:text-sm bg-gray-50 text-gray-900" />
+          </div>
+        </div>
+      </div>
+
+      
+      {/* Dynamic Section Headers */}
+      <div className="border-b border-gray-200 pb-6">
+        <h3 className="text-lg font-semibold text-gray-900 mb-4 uppercase tracking-wider text-sm border-l-4 border-primary pl-2">Dynamic Section Headers</h3>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div>
+            <label className="block text-sm font-medium text-gray-700">Intro Eyebrow (e.g., You Want the Best for What Matters)</label>
+            <input type="text" name="intro_eyebrow" defaultValue={initialConfig.intro_eyebrow || ''} className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm sm:text-sm bg-gray-50 text-gray-900" />
+          </div>
+          <div>
+            <label className="block text-sm font-medium text-gray-700">Intro Title (e.g., With Houston's unpredictable roads...)</label>
+            <input type="text" name="intro_title" defaultValue={initialConfig.intro_title || ''} className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm sm:text-sm bg-gray-50 text-gray-900" />
+          </div>
+          <div className="md:col-span-2">
+            <label className="block text-sm font-medium text-gray-700">Intro Description</label>
+            <textarea name="intro_description" defaultValue={initialConfig.intro_description || ''} rows={2} className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm sm:text-sm bg-gray-50 text-gray-900" />
+          </div>
+
+          <div>
+            <label className="block text-sm font-medium text-gray-700">Services Eyebrow</label>
+            <input type="text" name="services_eyebrow" defaultValue={initialConfig.services_eyebrow || ''} className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm sm:text-sm bg-gray-50 text-gray-900" />
+          </div>
+          <div>
+            <label className="block text-sm font-medium text-gray-700">Services Title</label>
+            <input type="text" name="services_title" defaultValue={initialConfig.services_title || ''} className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm sm:text-sm bg-gray-50 text-gray-900" />
+          </div>
+          <div className="md:col-span-2">
+            <label className="block text-sm font-medium text-gray-700">Services Description</label>
+            <textarea name="services_description" defaultValue={initialConfig.services_description || ''} rows={2} className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm sm:text-sm bg-gray-50 text-gray-900" />
+          </div>
+
+          <div>
+            <label className="block text-sm font-medium text-gray-700">Makes Eyebrow</label>
+            <input type="text" name="makes_eyebrow" defaultValue={initialConfig.makes_eyebrow || ''} className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm sm:text-sm bg-gray-50 text-gray-900" />
+          </div>
+          <div>
+            <label className="block text-sm font-medium text-gray-700">Makes Title</label>
+            <input type="text" name="makes_title" defaultValue={initialConfig.makes_title || ''} className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm sm:text-sm bg-gray-50 text-gray-900" />
+          </div>
+
+          <div>
+            <label className="block text-sm font-medium text-gray-700">Partners Eyebrow</label>
+            <input type="text" name="partners_eyebrow" defaultValue={initialConfig.partners_eyebrow || ''} className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm sm:text-sm bg-gray-50 text-gray-900" />
+          </div>
+          <div>
+            <label className="block text-sm font-medium text-gray-700">Partners Title</label>
+            <input type="text" name="partners_title" defaultValue={initialConfig.partners_title || ''} className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm sm:text-sm bg-gray-50 text-gray-900" />
+          </div>
+          <div className="md:col-span-2">
+            <label className="block text-sm font-medium text-gray-700">Partners Description</label>
+            <textarea name="partners_description" defaultValue={initialConfig.partners_description || ''} rows={2} className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm sm:text-sm bg-gray-50 text-gray-900" />
+          </div>
+
+          <div>
+            <label className="block text-sm font-medium text-gray-700">Testimonials Eyebrow</label>
+            <input type="text" name="testimonials_eyebrow" defaultValue={initialConfig.testimonials_eyebrow || ''} className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm sm:text-sm bg-gray-50 text-gray-900" />
+          </div>
+          <div>
+            <label className="block text-sm font-medium text-gray-700">Testimonials Title</label>
+            <input type="text" name="testimonials_title" defaultValue={initialConfig.testimonials_title || ''} className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm sm:text-sm bg-gray-50 text-gray-900" />
+          </div>
+
+          <div>
+            <label className="block text-sm font-medium text-gray-700">FAQs Eyebrow</label>
+            <input type="text" name="faqs_eyebrow" defaultValue={initialConfig.faqs_eyebrow || ''} className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm sm:text-sm bg-gray-50 text-gray-900" />
+          </div>
+          <div>
+            <label className="block text-sm font-medium text-gray-700">FAQs Title</label>
+            <input type="text" name="faqs_title" defaultValue={initialConfig.faqs_title || ''} className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm sm:text-sm bg-gray-50 text-gray-900" />
           </div>
         </div>
       </div>
