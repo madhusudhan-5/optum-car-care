@@ -36,8 +36,8 @@ export default function VideoHero({ title, subtitle, videoSrc }: VideoHeroProps)
             autoPlay
             loop
             muted
-            defaultMuted
             playsInline
+            ref={(el) => { if (el) el.defaultMuted = true; }}
             className="w-full h-full object-cover opacity-60 pointer-events-none"
           >
             <source src={videoSrc} type="video/mp4" />
