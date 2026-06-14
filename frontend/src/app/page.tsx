@@ -255,7 +255,7 @@ export default async function Home() {
         <section className="bg-black text-white py-28 px-6 md:px-12 border-t border-white/5 relative">
           <div className="max-w-7xl mx-auto">
             <div className="text-center mb-16">
-              <span className="text-primary font-black tracking-widest uppercase text-xs mb-4 block">Specialists in EV's & Exotics</span>
+              <span className="text-primary font-black tracking-widest uppercase text-xs mb-4 block">{config.makes_eyebrow || "Specialists in EV's & Exotics"}</span>
               <h2 className="text-4xl md:text-6xl font-heading font-black uppercase leading-none">{config.makes_title || 'Services Curated by Makes'}</h2>
             </div>
 
