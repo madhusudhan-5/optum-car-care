@@ -554,15 +554,18 @@ export async function uploadProcessConfigImage(id: number, formData: FormData) {
   }
 }
 
-export async function updateServicesPageConfig(id: number, data: any) {
+export async function updateServicesPageConfig(id: number | null, data: any) {
   try {
     const headers = await getAuthHeaders();
     if (!headers.Authorization) {
       return { error: 'Unauthorized' };
     }
 
-    const res = await fetch(`${API_URL}/services/config/${id}/`, {
-      method: 'PATCH',
+    const method = id ? 'PATCH' : 'POST';
+    const url = id ? `${API_URL}/services/config/${id}/` : `${API_URL}/services/config/`;
+
+    const res = await fetch(url, {
+      method,
       headers,
       body: JSON.stringify(data),
     });

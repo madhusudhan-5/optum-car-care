@@ -79,10 +79,10 @@ async function getServices() {
 // Helper function to resolve dynamic image paths served by Django Media
 const getImageUrl = (path: string) => {
   if (!path) return '';
-  if (path.startsWith('http://127.0.0.1:8000')) path = path.replace('http://127.0.0.1:8000', '');
+  if (path.startsWith('http://127.0.0.1:8000')) return path;
   if (path.startsWith('http')) return path;
-  if (path.startsWith('/')) return `${path}`;
-  return `/media/${path}`;
+  if (path.startsWith('/')) return `http://127.0.0.1:8000${path}`;
+  return `http://127.0.0.1:8000/media/${path}`;
 };
 
 // Helper function to extract YouTube ID
@@ -172,10 +172,10 @@ export default async function Home() {
                   {service.youtube_video_url && getYoutubeVideoId(service.youtube_video_url) ? (
                     <div className="absolute inset-0 z-0 pointer-events-none overflow-hidden bg-black">
                       <iframe
-                        src={`https://www.youtube.com/embed/${getYoutubeVideoId(service.youtube_video_url)}?autoplay=1&mute=1&loop=1&playlist=${getYoutubeVideoId(service.youtube_video_url)}&controls=0&showinfo=0&rel=0&modestbranding=1&playsinline=1`}
+                        src={`https://www.youtube.com/embed/${getYoutubeVideoId(service.youtube_video_url)}?autoplay=1&mute=1&loop=1&playlist=${getYoutubeVideoId(service.youtube_video_url)}&controls=0&showinfo=0&rel=0&modestbranding=1&playsinline=1&disablekb=1&fs=0`}
                         className="absolute w-[300%] h-[300%] top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 opacity-50 group-hover:opacity-70 transition-opacity duration-700 pointer-events-none"
                         frameBorder="0"
-                        allow="autoplay; encrypted-media"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                         allowFullScreen
                       ></iframe>
                     </div>
@@ -267,7 +267,7 @@ export default async function Home() {
                       <img
                         src={getImageUrl(make.image)}
                         alt={make.name}
-                        className="max-h-20 max-w-full object-contain filter invert brightness-0 opacity-70 group-hover:opacity-100 group-hover:scale-105 transition-all duration-300"
+                        className="max-h-20 max-w-full object-contain opacity-70 group-hover:opacity-100 group-hover:scale-105 transition-all duration-300"
                       />
                     ) : (
                       <span className="text-white text-xl font-black font-heading tracking-widest uppercase group-hover:text-primary transition-colors">{make.name}</span>
@@ -329,7 +329,7 @@ export default async function Home() {
                       <img
                         src={getImageUrl(partner.logo)}
                         alt={partner.name}
-                        className="h-10 w-auto object-contain filter brightness-0 invert opacity-50 group-hover:opacity-100 group-hover:scale-105 transition-all duration-300"
+                        className="h-10 w-auto object-contain opacity-80 group-hover:opacity-100 group-hover:scale-105 transition-all duration-300"
                       />
                     ) : (
                       <span className="text-gray-400 hover:text-white transition-colors text-sm sm:text-lg font-black uppercase tracking-widest">

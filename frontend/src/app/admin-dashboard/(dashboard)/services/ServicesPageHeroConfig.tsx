@@ -24,7 +24,7 @@ export default function ServicesPageHeroConfig({ initialConfig }: { initialConfi
         hero_description: fd.get('hero_description'),
       };
       
-      const configId = initialConfig?.id || 1;
+      const configId = initialConfig?.id || null;
       const res = await updateServicesPageConfig(configId, payload);
       
       if (res.success) {

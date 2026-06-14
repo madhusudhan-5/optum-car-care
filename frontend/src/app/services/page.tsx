@@ -14,10 +14,10 @@ async function getServices() {
 // Helper function to resolve dynamic image paths served by Django Media
 const getImageUrl = (path: string) => {
   if (!path) return '';
-  if (path.startsWith('http://127.0.0.1:8000')) path = path.replace('http://127.0.0.1:8000', '');
+  if (path.startsWith('http://127.0.0.1:8000')) return path;
   if (path.startsWith('http')) return path;
-  if (path.startsWith('/')) return `${path}`;
-  return `/media/${path}`;
+  if (path.startsWith('/')) return `http://127.0.0.1:8000${path}`;
+  return `http://127.0.0.1:8000/media/${path}`;
 };
 
 // Helper function to extract YouTube ID
@@ -87,10 +87,10 @@ export default async function ServicesMainPage() {
                  {service.youtube_video_url && getYoutubeVideoId(service.youtube_video_url) ? (
                     <div className="absolute inset-0 z-0 pointer-events-none overflow-hidden bg-black">
                       <iframe
-                        src={`https://www.youtube.com/embed/${getYoutubeVideoId(service.youtube_video_url)}?autoplay=1&mute=1&loop=1&playlist=${getYoutubeVideoId(service.youtube_video_url)}&controls=0&showinfo=0&rel=0&modestbranding=1&playsinline=1`}
+                        src={`https://www.youtube.com/embed/${getYoutubeVideoId(service.youtube_video_url)}?autoplay=1&mute=1&loop=1&playlist=${getYoutubeVideoId(service.youtube_video_url)}&controls=0&showinfo=0&rel=0&modestbranding=1&playsinline=1&disablekb=1&fs=0`}
                         className="absolute w-[300%] h-[300%] top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 opacity-70 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none"
                         frameBorder="0"
-                        allow="autoplay; encrypted-media"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                         allowFullScreen
                       ></iframe>
                     </div>
