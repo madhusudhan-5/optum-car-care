@@ -124,12 +124,11 @@ export default function ContactForm({ services = [], preselectedService = '', co
         </div>
 
         <div>
-          <label className="block text-[10px] font-black text-gray-400 uppercase tracking-widest mb-1.5">Email *</label>
+          <label className="block text-[10px] font-black text-gray-400 uppercase tracking-widest mb-1.5">Email (Optional)</label>
           <input
             type="email"
             name="email"
             placeholder="Enter your email address"
-            required
             className="w-full px-4 py-3 border border-gray-200 rounded-xl bg-gray-50 text-black placeholder-gray-400 text-sm font-semibold focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary focus:bg-white transition-all"
           />
         </div>

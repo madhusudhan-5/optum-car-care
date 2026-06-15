@@ -13,7 +13,8 @@ class HomePageConfig(models.Model):
     # The Standard Section
     standard_title = models.CharField(max_length=200, default="You Want the Best for What Matters")
     standard_description = models.TextField()
-    standard_image = models.ImageField(upload_to='content/standard/', blank=True, null=True)
+    standard_image_before = models.ImageField(upload_to='content/standard/before/', blank=True, null=True)
+    standard_image_after = models.ImageField(upload_to='content/standard/after/', blank=True, null=True)
 
     # About Us Section
     about_title = models.CharField(max_length=200, default="PREMIERE AUTOMOTIVE DETAILING")

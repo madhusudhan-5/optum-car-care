@@ -80,10 +80,15 @@ export default function HomeConfigForm({ initialConfig }: { initialConfig: any }
   const [bannerError, setBannerError] = useState('');
   const [bannerPreview, setBannerPreview] = useState<string | null>(getImageSrc(initialConfig.banner_image));
 
-  const [standardUploading, setStandardUploading] = useState(false);
-  const [standardSuccess, setStandardSuccess] = useState(false);
-  const [standardError, setStandardError] = useState('');
-  const [standardPreview, setStandardPreview] = useState<string | null>(getImageSrc(initialConfig.standard_image));
+  const [standardBeforeUploading, setStandardBeforeUploading] = useState(false);
+  const [standardBeforeSuccess, setStandardBeforeSuccess] = useState(false);
+  const [standardBeforeError, setStandardBeforeError] = useState('');
+  const [standardBeforePreview, setStandardBeforePreview] = useState<string | null>(getImageSrc(initialConfig.standard_image_before));
+
+  const [standardAfterUploading, setStandardAfterUploading] = useState(false);
+  const [standardAfterSuccess, setStandardAfterSuccess] = useState(false);
+  const [standardAfterError, setStandardAfterError] = useState('');
+  const [standardAfterPreview, setStandardAfterPreview] = useState<string | null>(getImageSrc(initialConfig.standard_image_after));
 
   const [heroUploading, setHeroUploading] = useState(false);
   const [heroSuccess, setHeroSuccess] = useState(false);
@@ -266,13 +271,22 @@ export default function HomeConfigForm({ initialConfig }: { initialConfig: any }
             uploadError={introError}
           />
           <ImageUploadField
-            label="'The Standard' Section Image"
-            fieldName="standard_image"
-            currentPreview={standardPreview}
-            onUpload={(e) => handleImageUpload(e, 'standard_image', setStandardUploading, setStandardSuccess, setStandardError, setStandardPreview)}
-            uploading={standardUploading}
-            uploadSuccess={standardSuccess}
-            uploadError={standardError}
+            label="'The Standard' Before Image"
+            fieldName="standard_image_before"
+            currentPreview={standardBeforePreview}
+            onUpload={(e) => handleImageUpload(e, 'standard_image_before', setStandardBeforeUploading, setStandardBeforeSuccess, setStandardBeforeError, setStandardBeforePreview)}
+            uploading={standardBeforeUploading}
+            uploadSuccess={standardBeforeSuccess}
+            uploadError={standardBeforeError}
+          />
+          <ImageUploadField
+            label="'The Standard' After Image"
+            fieldName="standard_image_after"
+            currentPreview={standardAfterPreview}
+            onUpload={(e) => handleImageUpload(e, 'standard_image_after', setStandardAfterUploading, setStandardAfterSuccess, setStandardAfterError, setStandardAfterPreview)}
+            uploading={standardAfterUploading}
+            uploadSuccess={standardAfterSuccess}
+            uploadError={standardAfterError}
           />
           <ImageUploadField
             label="About Us Image 1"

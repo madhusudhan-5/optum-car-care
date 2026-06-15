@@ -26,7 +26,7 @@ export default function VideoHero({ title, subtitle, videoSrc }: VideoHeroProps)
         {youtubeId ? (
           <iframe
             src={`https://www.youtube.com/embed/${youtubeId}?autoplay=1&mute=1&loop=1&playlist=${youtubeId}&controls=0&showinfo=0&rel=0&modestbranding=1&playsinline=1&disablekb=1&fs=0`}
-            className="absolute w-[300%] h-[300%] top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 opacity-60 pointer-events-none"
+            className="absolute w-[300%] h-[300%] sm:w-[150%] sm:h-[150%] top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 opacity-100 pointer-events-none"
             frameBorder="0"
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
           ></iframe>
@@ -38,14 +38,14 @@ export default function VideoHero({ title, subtitle, videoSrc }: VideoHeroProps)
             muted
             playsInline
             ref={(el) => { if (el) el.defaultMuted = true; }}
-            className="w-full h-full object-cover opacity-60 pointer-events-none"
+            className="absolute inset-0 w-full h-full object-cover opacity-100 pointer-events-none"
           >
             <source src={videoSrc} type="video/mp4" />
             Your browser does not support the video tag.
           </video>
         )}
-        {/* Strong gradient overlay for text readability */}
-        <div className="absolute inset-0 bg-gradient-to-b from-black/50 via-black/30 to-black/60" />
+        {/* Subtle gradient overlay for text readability, much lighter now */}
+        <div className="absolute inset-0 bg-black/20" />
       </div>
 
       {/* Content Overlay */}

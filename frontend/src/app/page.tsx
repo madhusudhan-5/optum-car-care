@@ -121,9 +121,8 @@ export default async function Home() {
             <img
               src={getImageUrl(config.hero_image)}
               alt="Hero Background"
-              className="w-full h-full object-cover object-center opacity-40 scale-105"
+              className="w-full h-full object-cover object-center scale-105"
             />
-            <div className="absolute inset-0 bg-gradient-to-b from-[#0a0a0a]/80 via-black/50 to-[#0a0a0a]" />
           </div>
         )}
         <div className="absolute inset-0 opacity-[0.02] bg-[radial-gradient(#fff_1px,transparent_1px)] [background-size:16px_16px] z-0"></div>
@@ -159,21 +158,20 @@ export default async function Home() {
 
       {/* 2. SERVICES GRID */}
       {services.length > 0 && (
-        <section className="bg-[#0a0a0a] pb-28 px-6 md:px-12">
+        <section className="bg-white pb-28 px-6 md:px-12">
           <div className="max-w-7xl mx-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6">
             {services.slice(0, 4).map((service: any, idx: number) => (
               <ScrollReveal key={service.id} delay={idx * 150} direction="up" className="h-full">
                 <Link
                   href={`/services/${service.slug}`}
-                  className="group relative h-96 overflow-hidden rounded-3xl bg-[#111] border border-white/5 flex flex-col justify-end p-8 shadow-md hover:shadow-2xl hover:border-primary/30 transition-all duration-500 block sheen-container"
+                  className="group relative h-96 overflow-hidden rounded-3xl bg-white border border-gray-200 flex flex-col justify-end p-8 shadow-md hover:shadow-2xl hover:border-primary/30 transition-all duration-500 block sheen-container"
                 >
-                  <div className="absolute inset-0 bg-gradient-to-t from-black via-black/60 to-transparent z-10 opacity-90 group-hover:opacity-95 transition-opacity" />
                   
                   {service.youtube_video_url && getYoutubeVideoId(service.youtube_video_url) ? (
-                    <div className="absolute inset-0 z-0 pointer-events-none overflow-hidden bg-black">
+                    <div className="absolute inset-0 z-0 pointer-events-none overflow-hidden bg-white">
                       <iframe
                         src={`https://www.youtube.com/embed/${getYoutubeVideoId(service.youtube_video_url)}?autoplay=1&mute=1&loop=1&playlist=${getYoutubeVideoId(service.youtube_video_url)}&controls=0&showinfo=0&rel=0&modestbranding=1&playsinline=1&disablekb=1&fs=0`}
-                        className="absolute w-[300%] h-[300%] top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 opacity-50 group-hover:opacity-70 transition-opacity duration-700 pointer-events-none"
+                        className="absolute w-[300%] h-[300%] top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 group-hover:scale-105 transition-transform duration-700 pointer-events-none"
                         frameBorder="0"
                         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                         allowFullScreen
@@ -184,16 +182,16 @@ export default async function Home() {
                       <img 
                         src={getImageUrl(service.hero_image)} 
                         alt={service.title} 
-                        className="w-full h-full object-cover opacity-50 group-hover:opacity-70 transition-all duration-700 group-hover:scale-105" 
+                        className="w-full h-full object-cover transition-all duration-700 group-hover:scale-105" 
                       />
                     </div>
                   ) : (
-                    <div className="absolute inset-0 opacity-10 bg-[radial-gradient(#fff_1px,transparent_1px)] [background-size:20px_20px] transition-transform duration-700 group-hover:scale-110 z-0"></div>
+                    <div className="absolute inset-0 opacity-10 bg-[radial-gradient(#000_1px,transparent_1px)] [background-size:20px_20px] transition-transform duration-700 group-hover:scale-110 z-0"></div>
                   )}
 
-                  <div className="relative z-20 transition-transform duration-300 group-hover:-translate-y-1">
-                    <span className="text-primary font-black uppercase tracking-widest text-xs mb-2 block">{service.tag_line}</span>
-                    <h3 className="text-white text-2xl font-black font-heading mb-4 uppercase leading-tight group-hover:text-primary transition-colors">{service.title}</h3>
+                  <div className="relative z-20 transition-transform duration-300 group-hover:-translate-y-1 bg-white/80 backdrop-blur-sm p-4 rounded-xl shadow-lg border border-white/20">
+                    <span className="text-primary font-black uppercase tracking-widest text-xs mb-1 block">{service.tag_line}</span>
+                    <h3 className="text-black text-xl font-black font-heading mb-2 uppercase leading-tight group-hover:text-primary transition-colors">{service.title}</h3>
                     <div className="flex items-center text-primary text-xs font-extrabold uppercase tracking-widest group-hover:translate-x-3 transition-transform duration-300">
                       View Service <span className="ml-2 font-sans text-sm">→</span>
                     </div>
@@ -271,7 +269,7 @@ export default async function Home() {
                     <img
                       src={getImageUrl(make.image)}
                       alt={make.name}
-                      className="max-h-20 max-w-full object-contain opacity-100 group-hover:scale-105 transition-all duration-300 invert"
+                      className="max-h-20 max-w-full object-contain opacity-100 group-hover:scale-105 transition-all duration-300"
                     />
                   ) : (
                     <span className="text-black text-xl font-black font-heading tracking-widest uppercase group-hover:text-primary transition-colors">{make.name}</span>
@@ -338,7 +336,7 @@ export default async function Home() {
                     <img
                       src={getImageUrl(partner.logo)}
                       alt={partner.name}
-                      className="h-12 md:h-16 w-auto object-contain opacity-100 group-hover:scale-105 transition-all duration-300 invert"
+                      className="h-12 md:h-16 w-auto object-contain opacity-100 group-hover:scale-105 transition-all duration-300"
                     />
                   ) : (
                     <span className="text-black transition-colors text-sm sm:text-lg font-black uppercase tracking-widest">
@@ -374,8 +372,11 @@ export default async function Home() {
           </ScrollReveal>
 
           <ScrollReveal direction="right" duration={1000} className="relative h-[550px] w-full rounded-3xl overflow-hidden bg-gradient-to-br from-[#111] to-[#151515] border border-white/5 flex items-center justify-center shadow-2xl group sheen-container">
-            {config.standard_image ? (
-              <ImageSplitter imageUrl={getImageUrl(config.standard_image)} />
+            {config.standard_image_before && config.standard_image_after ? (
+              <ImageSplitter 
+                beforeImage={getImageUrl(config.standard_image_before)} 
+                afterImage={getImageUrl(config.standard_image_after)} 
+              />
             ) : (
               <div className="absolute inset-0 flex items-center justify-center text-white font-black uppercase tracking-widest text-lg opacity-40">
                 Technical Preparation Clean Room

@@ -75,8 +75,8 @@ export default async function ContactPage() {
             <div className="space-y-8">
               <div>
                 <span className="text-primary font-black tracking-widest uppercase text-xs mb-3 block">What Happens Next?</span>
-                <h2 className="text-4xl md:text-5xl font-heading font-black mb-4 uppercase leading-tight text-white">
-                  Ready to Protect<br />Your Investment?
+                <h2 className="text-4xl md:text-5xl font-heading font-black mb-6 uppercase text-white tracking-tight leading-none">
+                  Ready to Protect<br />Your Vehicle?
                 </h2>
                 <p className="text-gray-400 text-lg leading-relaxed font-medium">
                   Once you fill out the form, we'll be in touch within one business day. We'll schedule a time to bring your vehicle in to go over the best protection options.

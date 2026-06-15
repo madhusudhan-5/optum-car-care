@@ -2,7 +2,7 @@
 
 import { useState, useRef, useEffect } from 'react';
 
-export default function ImageSplitter({ imageUrl }: { imageUrl: string }) {
+export default function ImageSplitter({ beforeImage, afterImage }: { beforeImage: string, afterImage: string }) {
   const [sliderPosition, setSliderPosition] = useState(50);
   const [isDragging, setIsDragging] = useState(false);
   const containerRef = useRef<HTMLDivElement>(null);
@@ -63,21 +63,21 @@ export default function ImageSplitter({ imageUrl }: { imageUrl: string }) {
         handleMove(e.touches[0].clientX);
       }}
     >
-      {/* Before Image (Desaturated/Dull) */}
+      {/* Before Image */}
       <img
-        src={imageUrl}
+        src={beforeImage}
         alt="Before Protection"
-        className="absolute inset-0 w-full h-full object-cover pointer-events-none filter grayscale opacity-50 contrast-75 blur-[1px]"
+        className="absolute inset-0 w-full h-full object-cover pointer-events-none"
       />
       <div className="absolute top-6 left-6 bg-black/60 text-white text-xs font-bold uppercase tracking-widest px-3 py-1 rounded backdrop-blur-sm z-10">Before</div>
 
-      {/* After Image (Vibrant) */}
+      {/* After Image */}
       <div 
         className="absolute inset-0 z-10 overflow-hidden pointer-events-none"
         style={{ clipPath: `inset(0 0 0 ${sliderPosition}%)` }}
       >
         <img
-          src={imageUrl}
+          src={afterImage}
           alt="After Protection"
           className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-[3000ms] ease-out pointer-events-none"
         />

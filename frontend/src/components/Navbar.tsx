@@ -6,9 +6,9 @@ import { usePathname, useRouter } from 'next/navigation';
 
 const navLinks = [
   { href: '/', label: 'Home', exact: true },
-  { href: '/process', label: 'Process', exact: true },
-  { href: '/studio-experience', label: 'Studio', exact: true },
   { href: '/services', label: 'Services', exact: false },
+  { href: '/studio-experience', label: 'Studio', exact: true },
+  { href: '/process', label: 'Process', exact: true },
   { href: '/contact', label: 'Contact', exact: true },
 ];
 
@@ -111,7 +111,7 @@ export default function Navbar() {
               className="text-white hover:text-primary transition-colors text-xs font-black uppercase tracking-wider flex items-center gap-2 focus:outline-none p-1"
               aria-label="Toggle menu"
             >
-              <span className="text-lg">{mobileMenuOpen ? '✕' : '☰'}</span>
+              <span className="text-3xl leading-none">{mobileMenuOpen ? '✕' : '☰'}</span>
             </button>
           </div>
         </div>

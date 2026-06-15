@@ -226,7 +226,7 @@ export default async function ServiceSinglePage({ params }: { params: Promise<{ 
       <section className="py-36 px-6 text-center bg-[#0a0a0a] relative">
          <ScrollReveal direction="up" className="max-w-4xl mx-auto">
            <h2 className="text-5xl md:text-8xl font-heading font-black mb-12 uppercase leading-none text-white tracking-tight">
-              READY TO SECURE<br/>YOUR INVESTMENT?
+              READY TO SECURE<br/>YOUR VEHICLE?
            </h2>
            <div className="flex flex-col sm:flex-row justify-center items-center gap-6">
               <Link href={service.cta_link} className="bg-primary text-black font-extrabold uppercase tracking-widest px-12 py-5 hover:bg-white transition-colors text-xs shadow-lg rounded-full">

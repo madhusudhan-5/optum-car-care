@@ -45,7 +45,7 @@ export default async function ServicesMainPage() {
   ]);
 
   const heroTitle = config?.hero_title || "Premium Car Protection Services.";
-  const heroDescription = config?.hero_description || "Discover our comprehensive range of high-end vehicle protection and detailing services designed to preserve your investment and elevate your driving experience.";
+  const heroDescription = config?.hero_description || "Discover our comprehensive range of high-end vehicle protection and detailing services designed to preserve your vehicle and elevate your driving experience.";
 
   // Premium loading / empty state
   if (!services || services.length === 0) {
