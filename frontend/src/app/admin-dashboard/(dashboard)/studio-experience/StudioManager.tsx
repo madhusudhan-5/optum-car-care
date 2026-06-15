@@ -6,6 +6,14 @@ import { updateStudioConfig, uploadStudioGalleryImage, deleteStudioGalleryImage 
 
 const emptyGalleryForm = { id: null as number | null, alt_text: "", category: "", image: null as File | null };
 
+const getImageUrl = (path: string) => {
+  if (!path) return '';
+  if (path.startsWith('http://127.0.0.1:8000')) path = path.replace('http://127.0.0.1:8000', '');
+  if (path.startsWith('http')) return path;
+  if (path.startsWith('/')) return `${path}`;
+  return `/media/${path}`;
+};
+
 export default function StudioManager({ initialConfig, initialGallery }: { initialConfig: any; initialGallery: any[] }) {
   const [config, setConfig] = useState(initialConfig || { id: null, hero_title: "", hero_subtitle: "", hero_video_url: "" });
   const [gallery, setGallery] = useState(initialGallery);
@@ -240,7 +248,7 @@ export default function StudioManager({ initialConfig, initialGallery }: { initi
             {gallery.map((item) => (
               <div key={item.id} className="border border-gray-200 rounded-xl overflow-hidden relative group shadow-sm hover:shadow-md transition-shadow bg-white">
                 <div className="aspect-square overflow-hidden">
-                  <img src={item.image} alt={item.alt_text} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" />
+                  <img src={getImageUrl(item.image)} alt={item.alt_text} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" />
                 </div>
                 <div className="p-2.5">
                   <p className="text-xs font-bold text-gray-800 truncate">{item.category}</p>

@@ -107,7 +107,7 @@ export default async function Home() {
       <div className="min-h-screen flex flex-col items-center justify-center bg-[#0a0a0a] text-white p-6 text-center">
         <div className="w-16 h-16 border-4 border-primary border-t-transparent rounded-full animate-spin mb-8"></div>
         <h2 className="text-3xl font-heading font-black text-primary uppercase tracking-widest mb-4">Connecting to Optum Car Care...</h2>
-        <p className="text-gray-400 max-w-md">Please ensure the backend server is running and the database has been populated.</p>
+        <p className="text-white max-w-md">Please ensure the backend server is running and the database has been populated.</p>
       </div>
     );
   }
@@ -135,7 +135,7 @@ export default async function Home() {
         </ScrollReveal>
 
         <ScrollReveal delay={200} duration={1000} className="w-full max-w-3xl">
-          <p className="text-xl md:text-2xl text-gray-400 mb-10 font-medium leading-relaxed">
+          <p className="text-xl md:text-2xl text-white mb-10 font-medium leading-relaxed">
             {config.hero_subtitle}
           </p>
         </ScrollReveal>
@@ -150,7 +150,7 @@ export default async function Home() {
           >
             Schedule a Vehicle Protection Analysis →
           </Link>
-          <div className="flex items-center gap-2 mt-4 text-xs text-gray-500 font-bold uppercase tracking-wider">
+          <div className="flex items-center gap-2 mt-4 text-xs text-white font-bold uppercase tracking-wider">
             <span className="text-yellow-400 text-base">★★★★★</span>
             {config.review_rating || '5.0'} STARS, {config.review_count || '205'} Google REVIEWS
           </div>
@@ -213,7 +213,7 @@ export default async function Home() {
             <h2 className="text-4xl md:text-5xl font-heading font-black mb-8 uppercase leading-none text-white">
               {config.intro_title}
             </h2>
-            <p className="text-gray-400 text-lg leading-relaxed mb-8 font-medium">
+            <p className="text-white text-lg leading-relaxed mb-8 font-medium">
               {config.intro_description}
             </p>
 
@@ -223,7 +223,7 @@ export default async function Home() {
               </h3>
               <ul className="space-y-4">
                 {config.pain_points?.map((pp: any, idx: number) => (
-                  <li key={idx} className="flex items-start gap-4 text-gray-300">
+                  <li key={idx} className="flex items-start gap-4 text-white">
                     <span className="text-red-500 font-black text-sm bg-red-500/10 w-6 h-6 rounded-full flex items-center justify-center shrink-0">✗</span>
                     <span className="text-sm font-semibold leading-relaxed">{pp.text}</span>
                   </li>
@@ -242,7 +242,7 @@ export default async function Home() {
             ) : (
               <>
                 <div className="absolute inset-0 opacity-[0.03] bg-[radial-gradient(#fff_1px,transparent_1px)] [background-size:20px_20px]"></div>
-                <span className="text-gray-500 text-sm font-black uppercase tracking-widest relative z-10 select-none">Technical Diagnostics</span>
+                <span className="text-white text-sm font-black uppercase tracking-widest relative z-10 select-none">Technical Diagnostics</span>
               </>
             )}
             <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent z-10"></div>
@@ -252,29 +252,32 @@ export default async function Home() {
 
       {/* 4. SPECIALISTS IN EV'S & CURATED MAKES */}
       {makes.length > 0 && (
-        <section className="bg-black text-white py-28 px-6 md:px-12 border-t border-white/5 relative">
-          <div className="max-w-7xl mx-auto">
+        <section className="bg-white text-black py-28 border-t border-gray-200 relative overflow-hidden">
+          <div className="max-w-7xl mx-auto px-6 md:px-12">
             <div className="text-center mb-16">
               <span className="text-primary font-black tracking-widest uppercase text-xs mb-4 block">{config.makes_eyebrow || "Specialists in EV's & Exotics"}</span>
               <h2 className="text-4xl md:text-6xl font-heading font-black uppercase leading-none">{config.makes_title || 'Services Curated by Makes'}</h2>
             </div>
+          </div>
 
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
-              {makes.map((make: any, idx: number) => (
-                <ScrollReveal key={make.id} delay={idx * 100} direction="up">
-                  <div className="bg-[#111] hover:bg-[#151515] hover:border-primary/30 transition-all duration-300 p-8 rounded-2xl border border-white/5 flex flex-col items-center justify-center h-40 group cursor-pointer shadow-lg relative overflow-hidden sheen-container">
-                    {make.image ? (
-                      <img
-                        src={getImageUrl(make.image)}
-                        alt={make.name}
-                        className="max-h-20 max-w-full object-contain opacity-70 group-hover:opacity-100 group-hover:scale-105 transition-all duration-300"
-                      />
-                    ) : (
-                      <span className="text-white text-xl font-black font-heading tracking-widest uppercase group-hover:text-primary transition-colors">{make.name}</span>
-                    )}
-                    <div className="w-1.5 h-1.5 bg-primary rounded-full mt-3 opacity-0 group-hover:opacity-100 transition-opacity"></div>
-                  </div>
-                </ScrollReveal>
+          <div className="relative w-full overflow-hidden flex">
+            <div className="absolute top-0 left-0 w-24 md:w-48 h-full bg-gradient-to-r from-white to-transparent z-10 pointer-events-none"></div>
+            <div className="absolute top-0 right-0 w-24 md:w-48 h-full bg-gradient-to-l from-white to-transparent z-10 pointer-events-none"></div>
+
+            <div className="flex animate-marquee w-max space-x-6 px-3">
+              {[...makes, ...makes, ...makes, ...makes].map((make: any, idx: number) => (
+                <div key={`${make.id}-${idx}`} className="w-[280px] flex-shrink-0 bg-gray-50 hover:bg-gray-100 hover:border-primary/30 transition-all duration-300 p-8 rounded-2xl border border-gray-200 flex flex-col items-center justify-center h-40 group cursor-pointer shadow-sm relative overflow-hidden sheen-container">
+                  {make.image ? (
+                    <img
+                      src={getImageUrl(make.image)}
+                      alt={make.name}
+                      className="max-h-20 max-w-full object-contain opacity-100 group-hover:scale-105 transition-all duration-300 invert"
+                    />
+                  ) : (
+                    <span className="text-black text-xl font-black font-heading tracking-widest uppercase group-hover:text-primary transition-colors">{make.name}</span>
+                  )}
+                  <div className="w-1.5 h-1.5 bg-primary rounded-full mt-3 opacity-0 group-hover:opacity-100 transition-opacity"></div>
+                </div>
               ))}
             </div>
           </div>
@@ -313,33 +316,38 @@ export default async function Home() {
 
       {/* 6. OUR PARTNERS & CERTIFIED INSTALLERS */}
       {partners.length > 0 && (
-        <section className="bg-[#080808] py-28 px-6 md:px-12 border-b border-white/5 text-white">
-          <div className="max-w-7xl mx-auto text-center">
+        <section className="bg-white text-black py-28 border-b border-gray-200 relative overflow-hidden">
+          <div className="max-w-7xl mx-auto text-center px-6 md:px-12">
             <ScrollReveal direction="down">
               <span className="text-primary font-black tracking-widest uppercase text-xs mb-4 block">{config.partners_eyebrow || 'Our Partners & Certified Installers'}</span>
               <h2 className="text-3xl md:text-5xl font-heading font-black uppercase mb-8">{config.partners_title || 'Industry Standard Products'}</h2>
-              <p className="text-gray-400 max-w-3xl mx-auto mb-16 leading-relaxed font-medium text-lg">
+              <p className="text-gray-600 max-w-3xl mx-auto mb-16 leading-relaxed font-medium text-lg">
                 {config.partners_description}
               </p>
-
-              <div className="flex flex-wrap justify-center items-center gap-10 md:gap-20">
-                {partners.map((partner: any) => (
-                  <div key={partner.id} className="group cursor-pointer">
-                    {partner.logo ? (
-                      <img
-                        src={getImageUrl(partner.logo)}
-                        alt={partner.name}
-                        className="h-10 w-auto object-contain opacity-80 group-hover:opacity-100 group-hover:scale-105 transition-all duration-300"
-                      />
-                    ) : (
-                      <span className="text-gray-400 hover:text-white transition-colors text-sm sm:text-lg font-black uppercase tracking-widest">
-                        {partner.name}
-                      </span>
-                    )}
-                  </div>
-                ))}
-              </div>
             </ScrollReveal>
+          </div>
+
+          <div className="relative w-full overflow-hidden flex py-4">
+            <div className="absolute top-0 left-0 w-24 md:w-48 h-full bg-gradient-to-r from-white to-transparent z-10 pointer-events-none"></div>
+            <div className="absolute top-0 right-0 w-24 md:w-48 h-full bg-gradient-to-l from-white to-transparent z-10 pointer-events-none"></div>
+
+            <div className="flex animate-marquee w-max space-x-10 px-5 md:space-x-20 items-center">
+              {[...partners, ...partners, ...partners, ...partners, ...partners].map((partner: any, idx: number) => (
+                <div key={`${partner.id}-${idx}`} className="group cursor-pointer flex-shrink-0">
+                  {partner.logo ? (
+                    <img
+                      src={getImageUrl(partner.logo)}
+                      alt={partner.name}
+                      className="h-12 md:h-16 w-auto object-contain opacity-100 group-hover:scale-105 transition-all duration-300 invert"
+                    />
+                  ) : (
+                    <span className="text-black transition-colors text-sm sm:text-lg font-black uppercase tracking-widest">
+                      {partner.name}
+                    </span>
+                  )}
+                </div>
+              ))}
+            </div>
           </div>
         </section>
       )}
@@ -352,12 +360,12 @@ export default async function Home() {
             <h2 className="text-4xl md:text-5xl font-heading font-black mb-8 uppercase leading-tight text-white">
               {config.standard_title}
             </h2>
-            <p className="text-gray-400 text-lg leading-relaxed mb-10 font-medium">
+            <p className="text-white text-lg leading-relaxed mb-10 font-medium">
               {config.standard_description}
             </p>
             <ul className="space-y-6">
               {config.standard_items?.map((item: any, idx: number) => (
-                <li key={idx} className="flex items-center gap-5 text-gray-300 font-bold uppercase tracking-wider text-sm">
+                <li key={idx} className="flex items-center gap-5 text-white font-bold uppercase tracking-wider text-sm">
                   <span className="text-primary text-xl bg-primary/10 w-8 h-8 rounded-full flex items-center justify-center shrink-0">✓</span>
                   {item.text}
                 </li>
@@ -369,7 +377,7 @@ export default async function Home() {
             {config.standard_image ? (
               <ImageSplitter imageUrl={getImageUrl(config.standard_image)} />
             ) : (
-              <div className="absolute inset-0 flex items-center justify-center text-gray-500 font-black uppercase tracking-widest text-lg opacity-40">
+              <div className="absolute inset-0 flex items-center justify-center text-white font-black uppercase tracking-widest text-lg opacity-40">
                 Technical Preparation Clean Room
               </div>
             )}
@@ -390,11 +398,11 @@ export default async function Home() {
               {testimonials.map((t: any, idx: number) => (
                 <ScrollReveal key={t.id} delay={idx * 200} direction="up" className="h-full">
                   <div className="bg-[#111] p-10 rounded-3xl border border-white/5 shadow-xl flex flex-col justify-between h-full hover:border-primary/20 transition-all duration-300 sheen-container">
-                    <p className="text-gray-300 italic text-lg leading-relaxed mb-8">"{t.text}"</p>
+                    <p className="text-white italic text-lg leading-relaxed mb-8">"{t.text}"</p>
                     <div className="flex justify-between items-center border-t border-white/5 pt-6 mt-auto">
                       <div>
                         <h4 className="text-white font-extrabold text-sm uppercase tracking-wider">{t.author_name}</h4>
-                        <span className="text-xs text-gray-500 font-bold uppercase tracking-wider">{t.date_posted}</span>
+                        <span className="text-xs text-white font-bold uppercase tracking-wider">{t.date_posted}</span>
                       </div>
                       <div className="text-yellow-400 text-sm">{"★".repeat(t.rating)}</div>
                     </div>
@@ -414,14 +422,14 @@ export default async function Home() {
               {config.about_image_1 ? (
                 <img src={getImageUrl(config.about_image_1)} alt="About Us 1" className="w-full h-full object-cover opacity-80 group-hover:scale-105 transition-transform duration-[2000ms]" />
               ) : (
-                <span className="text-gray-700 text-xs font-black uppercase tracking-widest">Detailing Studio</span>
+                <span className="text-white text-xs font-black uppercase tracking-widest">Detailing Studio</span>
               )}
             </div>
             <div className="bg-gradient-to-b from-[#151515] to-[#111] border border-white/5 rounded-3xl h-[85%] mt-16 shadow-xl flex items-center justify-center overflow-hidden group">
               {config.about_image_2 ? (
                 <img src={getImageUrl(config.about_image_2)} alt="About Us 2" className="w-full h-full object-cover opacity-80 group-hover:scale-105 transition-transform duration-[2000ms]" />
               ) : (
-                <span className="text-gray-700 text-xs font-black uppercase tracking-widest">Precision Wrap</span>
+                <span className="text-white text-xs font-black uppercase tracking-widest">Precision Wrap</span>
               )}
             </div>
           </ScrollReveal>
@@ -431,7 +439,7 @@ export default async function Home() {
             <h2 className="text-4xl md:text-5xl font-heading font-black mb-8 uppercase leading-tight text-white">
               {config.about_title}
             </h2>
-            <p className="text-gray-400 text-lg leading-relaxed mb-8 font-medium">
+            <p className="text-white text-lg leading-relaxed mb-8 font-medium">
               {config.about_description}
             </p>
             <ul className="space-y-4 mb-12">
@@ -454,15 +462,15 @@ export default async function Home() {
         <div className="max-w-7xl mx-auto grid grid-cols-3 gap-8 sm:gap-16 text-center">
           <ScrollReveal direction="up" delay={0}>
             <div className="text-3xl sm:text-5xl lg:text-6xl font-heading font-black mb-3 text-primary tracking-tight">{config.stat_1_number}</div>
-            <div className="text-gray-400 uppercase tracking-widest text-[10px] sm:text-xs font-bold">{config.stat_1_text}</div>
+            <div className="text-white uppercase tracking-widest text-[10px] sm:text-xs font-bold">{config.stat_1_text}</div>
           </ScrollReveal>
           <ScrollReveal direction="up" delay={150}>
             <div className="text-3xl sm:text-5xl lg:text-6xl font-heading font-black mb-3 text-primary tracking-tight">{config.stat_2_number}</div>
-            <div className="text-gray-400 uppercase tracking-widest text-[10px] sm:text-xs font-bold">{config.stat_2_text}</div>
+            <div className="text-white uppercase tracking-widest text-[10px] sm:text-xs font-bold">{config.stat_2_text}</div>
           </ScrollReveal>
           <ScrollReveal direction="up" delay={300}>
             <div className="text-3xl sm:text-5xl lg:text-6xl font-heading font-black mb-3 text-primary tracking-tight">{config.stat_3_number}</div>
-            <div className="text-gray-400 uppercase tracking-widest text-[10px] sm:text-xs font-bold">{config.stat_3_text}</div>
+            <div className="text-white uppercase tracking-widest text-[10px] sm:text-xs font-bold">{config.stat_3_text}</div>
           </ScrollReveal>
         </div>
       </section>
@@ -481,7 +489,7 @@ export default async function Home() {
                 <ScrollReveal key={faq.id} delay={idx * 100} direction="up">
                   <div className="bg-[#111] hover:bg-[#151515] p-8 rounded-2xl border border-white/5 transition-all duration-300 group cursor-pointer shadow-md sheen-container">
                     <h3 className="text-lg font-black font-heading text-white group-hover:text-primary mb-3 uppercase tracking-wide transition-colors">{faq.question}</h3>
-                    <p className="text-gray-400 text-sm leading-relaxed font-medium">{faq.answer}</p>
+                    <p className="text-white text-sm leading-relaxed font-medium">{faq.answer}</p>
                   </div>
                 </ScrollReveal>
               ))}
@@ -503,22 +511,22 @@ export default async function Home() {
             <h2 className="text-4xl sm:text-6xl font-heading font-black mb-8 leading-none uppercase text-white">
               What Happens<br />Next?
             </h2>
-            <p className="text-gray-400 text-lg mb-10 leading-relaxed max-w-lg font-medium">
+            <p className="text-white text-lg mb-10 leading-relaxed max-w-lg font-medium">
               Once you fill out the form, we will be in touch with you within one business day. At that time, we will schedule a time for you to bring your vehicle to the shop to go over protection options.
             </p>
 
-            <div className="space-y-6 border-t border-white/5 pt-8 text-sm text-gray-300">
+            <div className="space-y-6 border-t border-white/5 pt-8 text-sm text-white">
               <p className="flex items-center gap-4 font-bold uppercase tracking-wider">
                 <span className="text-primary text-lg bg-primary/10 w-8 h-8 rounded-full flex items-center justify-center">🏢</span>
-                <span>Address: <span className="text-gray-400 font-medium normal-case ml-1">{config.address}</span></span>
+                <span>Address: <span className="text-white font-medium normal-case ml-1">{config.address}</span></span>
               </p>
               <p className="flex items-center gap-4 font-bold uppercase tracking-wider">
                 <span className="text-primary text-lg bg-primary/10 w-8 h-8 rounded-full flex items-center justify-center">📞</span>
-                <span>Phone: <span className="text-gray-400 font-medium ml-1">{config.phone}</span></span>
+                <span>Phone: <span className="text-white font-medium ml-1">{config.phone}</span></span>
               </p>
               <p className="flex items-center gap-4 font-bold uppercase tracking-wider">
                 <span className="text-primary text-lg bg-primary/10 w-8 h-8 rounded-full flex items-center justify-center">⏰</span>
-                <span>Mon - Fri: <span className="text-gray-400 font-medium normal-case ml-1">{config.working_hours_mon_fri}</span></span>
+                <span>Mon - Fri: <span className="text-white font-medium normal-case ml-1">{config.working_hours_mon_fri}</span></span>
               </p>
             </div>
           </ScrollReveal>

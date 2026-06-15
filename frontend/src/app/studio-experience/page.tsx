@@ -27,6 +27,14 @@ export const metadata = {
   description: "Experience the premium Optum Car Care studio environment.",
 };
 
+const getImageUrl = (path: string) => {
+  if (!path) return '';
+  if (path.startsWith('http://127.0.0.1:8000')) path = path.replace('http://127.0.0.1:8000', '');
+  if (path.startsWith('http')) return path;
+  if (path.startsWith('/')) return `${path}`;
+  return `/media/${path}`;
+};
+
 export default async function StudioExperiencePage() {
   const config = await getStudioConfig();
   const rawGallery = await getGalleryItems();
@@ -38,7 +46,7 @@ export default async function StudioExperiencePage() {
   // Map API response to match StudioGallery component's expected structure
   const galleryItems = rawGallery.map((item: any) => ({
     id: item.id.toString(),
-    src: item.image,
+    src: getImageUrl(item.image),
     alt: item.alt_text,
     category: item.category,
   }));

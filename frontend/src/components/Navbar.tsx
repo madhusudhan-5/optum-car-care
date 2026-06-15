@@ -54,8 +54,6 @@ export default function Navbar() {
         <div className="max-w-7xl mx-auto w-full flex justify-between items-center">
           <div className="flex gap-3 sm:gap-4">
             <span>📍 Singasandra, Bengaluru</span>
-            <span className="text-gray-700">|</span>
-            <span className="hidden sm:inline">🛡️ Fully Insured</span>
           </div>
           <div className="hidden sm:flex gap-4 items-center">
             <span>📞 096328 04024</span>

@@ -46,15 +46,18 @@ export async function updateHomeConfig(id: number, data: any) {
   }
 }
 
-export async function updateProcessPageConfig(id: number, data: any) {
+export async function updateProcessPageConfig(id: number | null, data: any) {
   try {
     const headers = await getAuthHeaders();
     if (!headers.Authorization) {
       return { error: 'Unauthorized' };
     }
 
-    const res = await fetch(`${API_URL}/content/process-config/${id}/`, {
-      method: 'PATCH',
+    const method = id ? 'PATCH' : 'POST';
+    const url = id ? `${API_URL}/content/process-config/${id}/` : `${API_URL}/content/process-config/`;
+
+    const res = await fetch(url, {
+      method,
       headers,
       body: JSON.stringify(data),
     });
@@ -62,7 +65,7 @@ export async function updateProcessPageConfig(id: number, data: any) {
     if (res.ok) {
       revalidatePath('/process');
       revalidatePath('/');
-      return { success: true };
+      return { success: true, data: await res.json() };
     }
 
     const errData = await res.json();

@@ -95,8 +95,7 @@ export default function ProcessManager({ initialSteps, initialConfig }: { initia
         hero_description: fd.get('hero_description'),
         hero_video_url: fd.get('hero_video_url'),
       };
-      // Assume config ID is 1 (singleton) or initialConfig.id if exists.
-      const configId = initialConfig?.id || 1;
+      const configId = initialConfig?.id || null;
       const res = await updateProcessPageConfig(configId, payload);
       
       let successMsg = "Process Page Settings updated successfully!";
@@ -108,7 +107,8 @@ export default function ProcessManager({ initialSteps, initialConfig }: { initia
         if (imageFile && imageFile.size > 0) {
           const formData = new FormData();
           formData.append('hero_image', imageFile);
-          const imgRes = await uploadProcessConfigImage(configId, formData);
+          const activeConfigId = res.data?.id || configId;
+          const imgRes = await uploadProcessConfigImage(activeConfigId, formData);
           if (!imgRes.success) {
             errorMsg = "Text settings saved, but failed to upload the image.";
           }
