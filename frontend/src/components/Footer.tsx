@@ -19,7 +19,7 @@ export default async function Footer() {
     email: "info@optumcarcare.com",
     working_hours_mon_fri: "10:00 AM to 6:00 PM (Appointment Only)",
     working_hours_sat: "11:00 AM to 2:00 PM (Appointment Only)",
-    working_hours_sun: "Closed"
+    working_hours_sun: "Holiday"
   };
 
   return (
@@ -58,9 +58,8 @@ export default async function Footer() {
         <div>
           <h4 className="font-heading font-black uppercase tracking-wider text-xs mb-6 text-primary">OptumCarCare Hours</h4>
           <ul className="space-y-3.5 text-xs text-gray-400 font-bold uppercase tracking-wider">
-            <li className="flex justify-between gap-4"><span>Mon - Fri</span><span className="text-white font-medium text-right lowercase">{config.working_hours_mon_fri}</span></li>
-            <li className="flex justify-between gap-4"><span>Saturday</span><span className="text-white font-medium text-right lowercase">{config.working_hours_sat}</span></li>
-            <li className="flex justify-between gap-4"><span>Sunday</span><span className="text-white font-medium text-right lowercase">{config.working_hours_sun}</span></li>
+            <li className="flex justify-between gap-4"><span>Mon - Sat</span><span className="text-white font-medium text-right lowercase">{config.working_hours_mon_fri}</span></li>
+            <li className="flex justify-between gap-4"><span>Sunday</span><span className="text-white font-medium text-right lowercase">{config.working_hours_sun || 'Holiday'}</span></li>
           </ul>
         </div>
       </div>

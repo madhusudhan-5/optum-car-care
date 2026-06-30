@@ -2,6 +2,7 @@
 
 import React from "react";
 import { motion } from "framer-motion";
+import Link from "next/link";
 
 interface VideoHeroProps {
   title: string;
@@ -20,13 +21,13 @@ export default function VideoHero({ title, subtitle, videoSrc }: VideoHeroProps)
   const youtubeId = getYoutubeVideoId(videoSrc);
 
   return (
-    <div className="relative w-full h-[50vh] sm:h-[60vh] md:h-[70vh] min-h-[350px] overflow-hidden flex items-center justify-center pointer-events-none">
+    <div className="relative w-full aspect-[4/5] sm:aspect-square md:aspect-video max-h-[85vh] overflow-hidden flex items-center justify-center bg-black">
       {/* Background Video */}
-      <div className="absolute inset-0 z-0 bg-black pointer-events-none">
+      <div className="absolute inset-0 z-0 bg-black overflow-hidden pointer-events-none">
         {youtubeId ? (
           <iframe
             src={`https://www.youtube.com/embed/${youtubeId}?autoplay=1&mute=1&loop=1&playlist=${youtubeId}&controls=0&showinfo=0&rel=0&modestbranding=1&playsinline=1&disablekb=1&fs=0`}
-            className="absolute w-[300%] h-[300%] sm:w-[150%] sm:h-[150%] top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 opacity-100 pointer-events-none"
+            className="absolute top-1/2 left-1/2 w-[100vw] h-[56.25vw] min-h-[100vh] min-w-[177.77vh] -translate-x-1/2 -translate-y-1/2 scale-[1.05] pointer-events-none"
             frameBorder="0"
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
           ></iframe>
@@ -44,11 +45,15 @@ export default function VideoHero({ title, subtitle, videoSrc }: VideoHeroProps)
             Your browser does not support the video tag.
           </video>
         )}
-        {/* Subtle gradient overlay for text readability, much lighter now */}
-        <div className="absolute inset-0 bg-black/20" />
       </div>
 
       {/* Content Overlay */}
+      <div className="absolute top-0 left-0 w-full p-6 sm:p-12 z-20">
+        <Link href="/" className="inline-block text-primary text-xs font-black tracking-widest uppercase hover:underline">
+          ← Back to Home
+        </Link>
+      </div>
+
       <div className="relative z-10 text-center text-white px-4 sm:px-8 max-w-4xl mx-auto">
         <motion.h1
           initial={{ opacity: 0, y: 30 }}

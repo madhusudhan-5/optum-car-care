@@ -115,9 +115,17 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .animate-marquee {
-  animation: marquee 30s linear infinite;
+  animation: marquee 120s linear infinite;
 }
 
 .animate-marquee:hover {
+  animation-play-state: paused;
+}
+
+.animate-marquee-90 {
+  animation: marquee 90s linear infinite;
+}
+
+.animate-marquee-90:hover {
   animation-play-state: paused;
 }

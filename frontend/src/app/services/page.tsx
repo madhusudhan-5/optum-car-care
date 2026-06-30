@@ -88,7 +88,7 @@ export default async function ServicesMainPage() {
                     <div className="absolute inset-0 z-0 pointer-events-none overflow-hidden bg-black">
                       <iframe
                         src={`https://www.youtube.com/embed/${getYoutubeVideoId(service.youtube_video_url)}?autoplay=1&mute=1&loop=1&playlist=${getYoutubeVideoId(service.youtube_video_url)}&controls=0&showinfo=0&rel=0&modestbranding=1&playsinline=1&disablekb=1&fs=0`}
-                        className="absolute w-[300%] h-[300%] top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 opacity-70 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none"
+                        className="absolute top-1/2 left-1/2 w-[100vw] h-[56.25vw] min-h-[100vh] min-w-[177.77vh] -translate-x-1/2 -translate-y-1/2 scale-[1.05] pointer-events-none"
                         frameBorder="0"
                         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                         allowFullScreen
@@ -98,12 +98,11 @@ export default async function ServicesMainPage() {
                     <img 
                       src={getImageUrl(service.hero_image)} 
                       alt={service.title} 
-                      className="absolute inset-0 w-full h-full object-cover opacity-80 group-hover:scale-105 group-hover:opacity-100 transition-all duration-700"
+                      className="absolute inset-0 w-full h-full object-cover opacity-100 group-hover:scale-105 transition-all duration-700"
                     />
                  ) : (
                     <div className="absolute inset-0 opacity-[0.03] bg-[radial-gradient(#fff_1px,transparent_1px)] [background-size:24px_24px] group-hover:scale-105 transition-transform duration-700"></div>
                  )}
-                 <div className="absolute inset-0 bg-black/30 group-hover:bg-black/10 transition-colors"></div>
                  <div className="absolute inset-x-0 bottom-0 h-1/2 bg-gradient-to-t from-black/80 to-transparent"></div>
                  <div className="absolute bottom-8 left-8 text-primary font-black uppercase tracking-widest text-xs opacity-80 group-hover:opacity-100 transition-opacity z-20">
                     {service.tag_line || "BESPOKE CRAFT"}

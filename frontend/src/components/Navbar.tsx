@@ -57,6 +57,8 @@ export default function Navbar() {
           </div>
           <div className="hidden sm:flex gap-4 items-center">
             <span>📞 096328 04024</span>
+            <span className="text-gray-600 font-normal hidden md:inline">|</span>
+            <span>📞 9353891127</span>
           </div>
         </div>
       </div>

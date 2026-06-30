@@ -55,7 +55,7 @@ export default async function ServiceSinglePage({ params }: { params: Promise<{ 
       <section className="relative pt-36 pb-28 px-6 md:px-12 border-b border-white/5 bg-gradient-to-b from-[#111] to-[#0a0a0a] overflow-hidden min-h-[650px] flex items-center justify-center">
          {service.hero_image && (
            <div className="absolute inset-0 z-0">
-             <img src={getImageUrl(service.hero_image)} alt={service.title} className="w-full h-full object-cover opacity-30 scale-105 animate-pulse-slow" />
+             <img src={getImageUrl(service.hero_image)} alt={service.title} className="w-full h-full object-cover opacity-100 scale-105 animate-pulse-slow" />
              <div className="absolute inset-0 bg-gradient-to-t from-[#0a0a0a] via-black/60 to-transparent" />
            </div>
          )}
@@ -63,8 +63,8 @@ export default async function ServiceSinglePage({ params }: { params: Promise<{ 
          
          <div className="relative z-20 max-w-7xl mx-auto w-full">
             <ScrollReveal direction="down">
-              <Link href="/services" className="text-primary text-xs font-black tracking-widest uppercase mb-6 inline-block hover:underline">
-                ← Back to Services
+              <Link href="/" className="text-primary text-xs font-black tracking-widest uppercase mb-6 inline-block hover:underline">
+                ← Back to Home
               </Link>
               <div className="text-primary font-black tracking-widest uppercase text-xs mb-4">
                 {service.tag_line || "CRAFT DETAIL"}
@@ -193,7 +193,7 @@ export default async function ServiceSinglePage({ params }: { params: Promise<{ 
          <div className="max-w-7xl mx-auto flex flex-col md:flex-row gap-20 items-center">
             <ScrollReveal direction="left" duration={1000} className="flex-1 w-full h-[500px] bg-gradient-to-br from-[#151515] to-[#0d0d0d] border border-white/5 rounded-3xl relative overflow-hidden flex items-center justify-center shadow-2xl group">
                {service.standards_image ? (
-                 <img src={getImageUrl(service.standards_image)} alt="Excellence Standards" className="absolute inset-0 w-full h-full object-cover opacity-80 group-hover:scale-105 transition-transform duration-[1500ms]" />
+                 <img src={getImageUrl(service.standards_image)} alt="Excellence Standards" className="absolute inset-0 w-full h-full object-cover opacity-100 group-hover:scale-105 transition-transform duration-[1500ms]" />
                ) : (
                  <>
                    <div className="absolute inset-0 opacity-[0.03] bg-[radial-gradient(#fff_1px,transparent_1px)] [background-size:20px_20px]"></div>

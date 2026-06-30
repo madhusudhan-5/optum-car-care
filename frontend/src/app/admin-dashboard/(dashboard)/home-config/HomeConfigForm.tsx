@@ -610,12 +610,12 @@ export default function HomeConfigForm({ initialConfig }: { initialConfig: any }
         <h3 className="text-lg font-semibold text-gray-900 mb-4 uppercase tracking-wider text-sm border-l-4 border-primary pl-2">Working Hours</h3>
         <div className="grid grid-cols-1 gap-6">
           <div>
-            <label className="block text-sm font-medium text-gray-700">Monday - Friday Hours</label>
+            <label className="block text-sm font-medium text-gray-700">Monday - Saturday Hours</label>
             <input type="text" name="working_hours_mon_fri" defaultValue={initialConfig.working_hours_mon_fri || ''}
               placeholder="e.g. 10:00 AM to 6:00 PM (Appointment Only)"
               className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-primary focus:border-primary sm:text-sm bg-gray-50 text-gray-900" />
           </div>
-          <div>
+          <div className="hidden">
             <label className="block text-sm font-medium text-gray-700">Saturday Hours</label>
             <input type="text" name="working_hours_sat" defaultValue={initialConfig.working_hours_sat || ''}
               placeholder="e.g. 11:00 AM to 2:00 PM (Appointment Only)"

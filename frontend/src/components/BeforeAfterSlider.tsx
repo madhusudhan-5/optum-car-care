@@ -65,7 +65,7 @@ export default function BeforeAfterSlider({ title, beforeImage, afterImage }: Be
         ref={containerRef}
         onMouseDown={handleStartDrag}
         onTouchStart={handleStartDrag}
-        className="h-[450px] bg-[#111] rounded-3xl border border-white/5 relative overflow-hidden shadow-2xl select-none cursor-ew-resize"
+        className="w-full aspect-[4/5] sm:aspect-square md:aspect-video max-h-[70vh] bg-[#111] rounded-3xl border border-white/5 relative overflow-hidden shadow-2xl select-none cursor-ew-resize"
       >
         {/* BEFORE SIDE (Dull, scratched paint background) */}
         <div className="absolute inset-0 bg-[#0f0f0f] flex items-center justify-center">

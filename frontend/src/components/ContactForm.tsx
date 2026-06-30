@@ -124,21 +124,11 @@ export default function ContactForm({ services = [], preselectedService = '', co
         </div>
 
         <div>
-          <label className="block text-[10px] font-black text-gray-400 uppercase tracking-widest mb-1.5">Email (Optional)</label>
-          <input
-            type="email"
-            name="email"
-            placeholder="Enter your email address"
-            className="w-full px-4 py-3 border border-gray-200 rounded-xl bg-gray-50 text-black placeholder-gray-400 text-sm font-semibold focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary focus:bg-white transition-all"
-          />
-        </div>
-
-        <div>
-          <label className="block text-[10px] font-black text-gray-400 uppercase tracking-widest mb-1.5">Year, Make, Model *</label>
+          <label className="block text-[10px] font-black text-gray-400 uppercase tracking-widest mb-1.5">CAR MAKE *</label>
           <input
             type="text"
             name="vehicle"
-            placeholder="e.g. 2023 BMW M3"
+            placeholder="e.g. BMW"
             required
             className="w-full px-4 py-3 border border-gray-200 rounded-xl bg-gray-50 text-black placeholder-gray-400 text-sm font-semibold focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary focus:bg-white transition-all"
           />
@@ -161,27 +151,7 @@ export default function ContactForm({ services = [], preselectedService = '', co
           </select>
         </div>
 
-        <div>
-          <label className="block text-[10px] font-black text-gray-400 uppercase tracking-widest mb-1.5">Additional Notes</label>
-          <textarea
-            name="message"
-            rows={3}
-            placeholder="Any specific concerns or questions? (optional)"
-            className="w-full px-4 py-3 border border-gray-200 rounded-xl bg-gray-50 text-black placeholder-gray-400 text-sm font-semibold focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary focus:bg-white transition-all resize-none"
-          />
-        </div>
 
-        <div className="flex items-start gap-3 pt-1">
-          <input
-            type="checkbox"
-            id="terms"
-            required
-            className="mt-1 accent-primary"
-          />
-          <label htmlFor="terms" className="text-[10px] text-gray-400 font-semibold leading-relaxed uppercase tracking-wider">
-            I agree to terms & conditions. By providing my phone number, I agree to receive text messages & phone calls from Optum Car Care.
-          </label>
-        </div>
 
         <button
           type="submit"

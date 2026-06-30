@@ -50,53 +50,65 @@ export default async function ProcessPage() {
   const heroVideoUrl = config?.hero_video_url || "https://cdn.pixabay.com/video/2021/08/04/83866-584733364_large.mp4";
   const heroImage = config?.hero_image;
 
+  const getYoutubeVideoId = (url: string) => {
+    if (!url) return null;
+    const regExp = /^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|\&v=)([^#\&\?]*).*/;
+    const match = url.match(regExp);
+    return (match && match[2].length === 11) ? match[2] : null;
+  };
+  const youtubeId = getYoutubeVideoId(heroVideoUrl);
+
   return (
     <main className="min-h-screen bg-[#0a0a0a] text-white selection:bg-primary/30 font-sans">
       
       {/* --- HERO SECTION --- */}
-      <section className="relative pt-24 sm:pt-32 pb-16 sm:pb-24 border-b border-white/5 overflow-hidden">
-        {heroImage && (
+      <section className="relative pt-16 sm:pt-20 pb-10 sm:pb-16 border-b border-white/5 overflow-hidden">
+        {heroVideoUrl ? (
           <>
-            <div className="absolute inset-0 z-0">
-              <img src={heroImage} alt="Process Hero Background" className="w-full h-full object-cover opacity-30" />
+            <div className="absolute inset-0 z-0 bg-black overflow-hidden pointer-events-none">
+              {youtubeId ? (
+                <iframe
+                  src={`https://www.youtube.com/embed/${youtubeId}?autoplay=1&mute=1&loop=1&playlist=${youtubeId}&controls=0&showinfo=0&rel=0&modestbranding=1&playsinline=1&disablekb=1&fs=0`}
+                  className="absolute top-1/2 left-1/2 w-[100vw] h-[56.25vw] min-h-[100vh] min-w-[177.77vh] -translate-x-1/2 -translate-y-1/2 scale-[1.05] opacity-70 pointer-events-none"
+                  frameBorder="0"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                ></iframe>
+              ) : (
+                <video autoPlay loop muted playsInline className="w-full h-full object-cover opacity-70 pointer-events-none">
+                  <source src={heroVideoUrl} type="video/mp4" />
+                </video>
+              )}
             </div>
             <div className="absolute inset-0 z-0 bg-gradient-to-b from-[#0a0a0a] via-transparent to-[#0a0a0a]"></div>
-            <div className="absolute inset-0 z-0 bg-gradient-to-r from-[#0a0a0a] via-[#0a0a0a]/80 to-transparent"></div>
+            <div className="absolute inset-0 z-0 bg-gradient-to-r from-[#0a0a0a] via-[#0a0a0a]/40 to-transparent"></div>
           </>
-        )}
+        ) : heroImage ? (
+          <>
+            <div className="absolute inset-0 z-0">
+              <img src={heroImage} alt="Process Hero Background" className="w-full h-full object-cover opacity-100 pointer-events-none" />
+            </div>
+            <div className="absolute inset-0 z-0 bg-gradient-to-b from-[#0a0a0a] via-transparent to-[#0a0a0a]"></div>
+            <div className="absolute inset-0 z-0 bg-gradient-to-r from-[#0a0a0a] via-[#0a0a0a]/40 to-transparent"></div>
+          </>
+        ) : null}
         
         <div className="max-w-7xl mx-auto px-4 sm:px-6 relative z-10">
           <Link href="/" className="inline-flex text-gray-400 hover:text-white text-xs font-bold uppercase tracking-widest items-center gap-2 mb-8 sm:mb-12 transition-colors">
             <span className="text-primary">←</span> Back to Home
           </Link>
 
-        <div className="grid lg:grid-cols-2 gap-10 sm:gap-16 items-start">
+        <div className="mt-6 max-w-lg lg:max-w-xl">
           <ScrollReveal>
-            <span className="text-primary text-[10px] font-black tracking-[0.2em] uppercase mb-4 block">Optum Studio</span>
-            <h1 
-              className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-heading font-black leading-[1.1] uppercase break-words"
-              dangerouslySetInnerHTML={{ __html: heroTitle.replace(/\n/g, '<br/>') }}
-            />
-          </ScrollReveal>
-
-          <ScrollReveal direction="up" delay={200} className="lg:mt-8">
-            <p className="text-gray-400 text-base sm:text-lg md:text-xl leading-relaxed mb-6 sm:mb-8 max-w-lg font-medium whitespace-pre-line">
-              {heroDescription}
-            </p>
-            {heroVideoUrl && (
-              <a 
-                href={heroVideoUrl} 
-                target="_blank" 
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-4 bg-white/5 hover:bg-white/10 border border-white/10 px-5 sm:px-6 py-3 sm:py-4 rounded-xl transition-all group w-full sm:w-auto"
-              >
-                <PlayCircle className="w-7 h-7 sm:w-8 sm:h-8 text-blue-500 group-hover:scale-110 transition-transform shrink-0" />
-                <div className="text-left">
-                  <span className="block text-white font-bold text-sm">Watch Video</span>
-                  <span className="block text-gray-500 text-xs">See our process in action</span>
-                </div>
-              </a>
-            )}
+            <div className="bg-black/30 backdrop-blur-md p-5 sm:p-6 rounded-2xl border border-white/10 shadow-2xl">
+              <span className="text-primary text-[10px] font-black tracking-[0.2em] uppercase mb-3 block">Optum Studio</span>
+              <h1 
+                className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-heading font-black leading-[1.1] uppercase break-words mb-4"
+                dangerouslySetInnerHTML={{ __html: heroTitle.replace(/\n/g, '<br/>') }}
+              />
+              <p className="text-white text-sm sm:text-base leading-relaxed font-medium whitespace-pre-line drop-shadow-md">
+                {heroDescription}
+              </p>
+            </div>
           </ScrollReveal>
         </div>
         </div>
@@ -104,9 +116,9 @@ export default async function ProcessPage() {
 
 
       {/* --- VEHICLE JOURNEY TIMELINE --- */}
-      <section className="max-w-5xl mx-auto px-4 sm:px-6 py-16 sm:py-24 lg:py-32 relative">
+      <section className="max-w-5xl mx-auto px-4 sm:px-6 py-10 sm:py-16 lg:py-20 relative">
         <ScrollReveal>
-          <div className="text-center mb-12 sm:mb-20 lg:mb-24">
+          <div className="text-center mb-8 sm:mb-12 lg:mb-16">
             <h2 className="text-3xl sm:text-4xl md:text-5xl font-heading font-black uppercase mb-4">Vehicle Journey</h2>
             <p className="text-gray-500 font-medium tracking-widest uppercase text-xs">All times are approximate</p>
             <p className="text-gray-600 text-xs mt-2 max-w-xl mx-auto">

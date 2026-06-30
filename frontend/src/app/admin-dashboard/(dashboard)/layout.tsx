@@ -3,6 +3,7 @@ import { redirect } from 'next/navigation';
 import Link from 'next/link';
 import { logout } from '@/actions/auth';
 import { SidebarNav, DynamicHeader } from './SidebarNav';
+import FileLimit from './FileLimit';
 
 export default async function AdminLayout({
   children,
@@ -18,6 +19,7 @@ export default async function AdminLayout({
 
   return (
     <div className="min-h-screen bg-gray-100 font-sans text-gray-900">
+      <FileLimit />
       <div className="flex h-screen overflow-hidden">
         {/* Sidebar */}
         <div className="w-64 bg-gray-900 text-white flex flex-col shrink-0">

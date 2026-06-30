@@ -1,0 +1,9 @@
+Page,Section Name,Media Type,Recommended Aspect Ratio,Recommended Resolution (px),Notes
+Home Page,Main Top Hero,Video,16:9,1920 x 1080,Background video. Crops automatically on mobile.
+Home Page,Studio Gallery,Image,1:1 (Square),1080 x 1080,Perfect squares for the grid.
+Home Page,Before/After Slider,Image,4:3,1440 x 1080,Export both before and after perfectly matched.
+Home Page,Hover Splitter,Image,4:3,1440 x 1080,Same rules as the slider.
+Services Page,Service Cards,Image / Video,4:3 or 1:1,1440 x 1080 or 1080 x 1080,Fixed height cards. 4:3 fills the space nicely on desktop.
+Process Page,Header Banner,Image,16:9,1920 x 1080,Dark faded background image behind the title text.
+Process Page,Watch Video Link,Video Link,16:9,1920 x 1080,Links out to an external video (standard widescreen).
+Global Elements,Navbar / Footer Logo,Image,Flexible,~300 x 100,Use an SVG or a PNG with a transparent background.
