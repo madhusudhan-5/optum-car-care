@@ -49,15 +49,27 @@ export default function ContactForm({ services = [], preselectedService = '', co
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(payload),
       });
-      const data = await res.json();
+      
+      let data;
+      try {
+        data = await res.json();
+      } catch (parseError) {
+        console.error("Failed to parse JSON response. Status:", res.status);
+        setError(`Server returned an invalid response (Status ${res.status}). Please check server logs.`);
+        setLoading(false);
+        return;
+      }
+
       if (data.success) {
         setSuccess(true);
         form.reset();
       } else {
-        setError('Something went wrong. Please try again or call us directly.');
+        console.error("API Error:", data.error);
+        setError(data.error || 'Something went wrong. Please try again or call us directly.');
       }
-    } catch {
-      setError('Could not connect. Please call us at 096328 04024.');
+    } catch (err) {
+      console.error("Fetch failed:", err);
+      setError('Could not connect. Please check your internet or call us at 096328 04024.');
     }
     setLoading(false);
   }
