@@ -103,19 +103,16 @@ export default async function ServiceSinglePage({ params }: { params: Promise<{ 
             <p className="text-gray-600 text-lg mb-16 font-medium leading-relaxed max-w-2xl mx-auto">{service.manifesto_description}</p>
           </ScrollReveal>
 
-          <ScrollReveal delay={200} direction="up" className="max-w-5xl mx-auto h-[500px] bg-gradient-to-br from-gray-100 to-gray-200 border border-gray-300 rounded-3xl flex items-center justify-center relative overflow-hidden shadow-2xl group cursor-pointer">
-             {service.manifesto_media ? (
-               <img src={getImageUrl(service.manifesto_media)} alt={service.manifesto_title} className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" />
-             ) : (
-               <div className="absolute inset-0 opacity-[0.04] bg-[linear-gradient(to_right,#808080_1px,transparent_1px),linear-gradient(to_bottom,#808080_1px,transparent_1px)] bg-[size:32px_32px]"></div>
-             )}
-             <div className="absolute inset-0 bg-black/20 group-hover:bg-black/10 transition-colors" />
-             <div className="w-20 h-20 rounded-full border-2 border-primary bg-white flex items-center justify-center text-primary text-xl z-10 hover:scale-110 active:scale-95 transition-transform shadow-xl">
-               ▶
-             </div>
-             <div className="absolute bottom-6 left-6 text-white font-black uppercase tracking-widest text-[10px] drop-shadow-md">
-               Micro-Precision Application Documentary
-             </div>
+          <ScrollReveal delay={200} direction="up" className="max-w-5xl mx-auto h-[500px] bg-black border border-gray-300 rounded-3xl flex items-center justify-center relative overflow-hidden shadow-2xl">
+             {/* Replace YOUR_VIDEO_ID with the actual YouTube video ID. Example: if link is youtube.com/watch?v=dQw4w9WgXcQ, the ID is dQw4w9WgXcQ */}
+             <iframe 
+                className="absolute inset-0 w-full h-full"
+                src="https://www.youtube.com/embed/YOUR_VIDEO_ID?autoplay=1&mute=1&loop=1&playlist=YOUR_VIDEO_ID" 
+                title="The Art of the Install" 
+                frameBorder="0" 
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                allowFullScreen
+             ></iframe>
           </ScrollReveal>
         </section>
       )}
