@@ -79,15 +79,21 @@ export async function updateProcessPageConfig(id: number | null, data: any) {
 export async function uploadHomeConfigImage(id: number, formData: FormData) {
   try {
     const token = await getAuthToken();
+    console.log("uploadHomeConfigImage called, token:", token ? "exists" : "null");
     if (!token) return { error: 'Unauthorized' };
+
+    const newFormData = new FormData();
+    for (const [key, value] of formData.entries()) {
+      newFormData.append(key, value);
+    }
+
+    const headers = new Headers();
+    headers.append('Authorization', `Bearer ${token}`);
 
     const res = await fetch(`${API_URL}/content/home-config/${id}/`, {
       method: 'PATCH',
-      headers: {
-        'Authorization': `Bearer ${token}`,
-        // Do NOT set Content-Type here — browser/Node will set it with multipart boundary automatically
-      },
-      body: formData,
+      headers: headers,
+      body: newFormData,
     });
 
     if (res.ok) {

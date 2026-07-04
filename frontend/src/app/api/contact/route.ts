@@ -87,8 +87,10 @@ export async function POST(request: NextRequest) {
     return NextResponse.json({ success: true });
   } catch (error: any) {
     console.error('Email send error:', error);
-    // Still return success to user even if email fails in dev (no SMTP configured yet)
-    // Remove the line below in production once SMTP is configured
-    return NextResponse.json({ success: true, warning: 'Email not sent — SMTP not configured yet' });
+    // Return an error to the frontend if the email fails to send
+    return NextResponse.json(
+      { success: false, error: 'Failed to send email. Please check SMTP configuration.' },
+      { status: 500 }
+    );
   }
 }
