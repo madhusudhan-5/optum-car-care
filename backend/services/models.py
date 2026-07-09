@@ -11,6 +11,7 @@ class Service(models.Model):
     # Craft Manifesto
     manifesto_title = models.CharField(max_length=200, default="THE ART OF THE INSTALL")
     manifesto_description = models.TextField(blank=True)
+    manifesto_youtube_url = models.URLField(blank=True, null=True, help_text="YouTube URL for Craft Manifesto section (e.g., https://www.youtube.com/watch?v=dQw4w9WgXcQ)")
     manifesto_media = models.ImageField(upload_to='services/manifesto/', blank=True, null=True)
     
     # Standards

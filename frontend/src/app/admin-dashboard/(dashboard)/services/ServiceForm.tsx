@@ -130,6 +130,7 @@ export default function ServiceForm({ initialService }: { initialService?: any }
       youtube_video_url: formData.get('youtube_video_url') || null,
       manifesto_title: formData.get('manifesto_title') || 'THE ART OF THE INSTALL',
       manifesto_description: formData.get('manifesto_description'),
+      manifesto_youtube_url: formData.get('manifesto_youtube_url') || null,
       standards_title: formData.get('standards_title') || 'UNCOMPROMISED STANDARDS IN EVERY MICRON',
       standards_description: formData.get('standards_description'),
       cta_text: formData.get('cta_text') || 'GET A BESPOKE QUOTE',
@@ -255,6 +256,11 @@ export default function ServiceForm({ initialService }: { initialService?: any }
           <div>
             <label className="block text-sm font-medium text-gray-700">Manifesto Description</label>
             <textarea name="manifesto_description" defaultValue={initialService?.manifesto_description || ''} rows={3} required className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm sm:text-sm bg-gray-50 text-gray-900" />
+          </div>
+          <div>
+            <label className="block text-sm font-medium text-gray-700">Manifesto YouTube URL (Optional)</label>
+            <input type="url" name="manifesto_youtube_url" defaultValue={initialService?.manifesto_youtube_url || ''} placeholder="e.g. https://www.youtube.com/watch?v=..." className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm sm:text-sm bg-gray-50 text-gray-900 font-mono" />
+            <p className="text-xs text-gray-500 mt-1">If provided, this video will be embedded in the Craft Manifesto section.</p>
           </div>
         </div>
       </div>

@@ -32,6 +32,12 @@ const getImageUrl = (path: string | undefined | null) => {
   return `/media/${path}`;
 };
 
+const getYouTubeId = (url: string | undefined | null) => {
+  if (!url) return null;
+  const match = url.match(/(?:youtu\.be\/|youtube\.com\/(?:embed\/|v\/|watch\?v=|watch\?.+&v=))([^&?]+)/);
+  return match ? match[1] : null;
+};
+
 export default async function ServiceSinglePage({ params }: { params: Promise<{ slug: string }> | { slug: string } }) {
   const resolvedParams = await params;
   const service = await getServiceDetails(resolvedParams.slug);
@@ -103,17 +109,34 @@ export default async function ServiceSinglePage({ params }: { params: Promise<{ 
             <p className="text-gray-600 text-lg mb-16 font-medium leading-relaxed max-w-2xl mx-auto">{service.manifesto_description}</p>
           </ScrollReveal>
 
-          <ScrollReveal delay={200} direction="up" className="max-w-5xl mx-auto h-[500px] bg-black border border-gray-300 rounded-3xl flex items-center justify-center relative overflow-hidden shadow-2xl">
-             {/* Replace YOUR_VIDEO_ID with the actual YouTube video ID. Example: if link is youtube.com/watch?v=dQw4w9WgXcQ, the ID is dQw4w9WgXcQ */}
-             <iframe 
-                className="absolute inset-0 w-full h-full"
-                src="https://www.youtube.com/embed/YOUR_VIDEO_ID?autoplay=1&mute=1&loop=1&playlist=YOUR_VIDEO_ID" 
-                title="The Art of the Install" 
-                frameBorder="0" 
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-                allowFullScreen
-             ></iframe>
-          </ScrollReveal>
+          {service.manifesto_youtube_url && getYouTubeId(service.manifesto_youtube_url) ? (
+            <ScrollReveal delay={200} direction="up" className="max-w-5xl mx-auto w-full aspect-video bg-black border border-gray-300 rounded-3xl flex items-center justify-center relative overflow-hidden shadow-2xl">
+               <iframe 
+                  className="absolute inset-0 w-full h-full"
+                  src={`https://www.youtube.com/embed/${getYouTubeId(service.manifesto_youtube_url)}?autoplay=1&mute=1&loop=1&controls=0&rel=0&modestbranding=1&playlist=${getYouTubeId(service.manifesto_youtube_url)}`} 
+                  title="The Art of the Install" 
+                  frameBorder="0" 
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                  allowFullScreen
+               ></iframe>
+            </ScrollReveal>
+          ) : service.manifesto_media ? (
+            <ScrollReveal delay={200} direction="up" className="max-w-5xl mx-auto w-full aspect-video bg-black border border-gray-300 rounded-3xl flex items-center justify-center relative overflow-hidden shadow-2xl">
+               <img src={getImageUrl(service.manifesto_media)} alt={service.manifesto_title} className="w-full h-full object-cover" />
+            </ScrollReveal>
+          ) : (
+            <ScrollReveal delay={200} direction="up" className="max-w-5xl mx-auto w-full aspect-video bg-black border border-gray-300 rounded-3xl flex items-center justify-center relative overflow-hidden shadow-2xl">
+               {/* Replace YOUR_VIDEO_ID with the actual YouTube video ID. Example: if link is youtube.com/watch?v=dQw4w9WgXcQ, the ID is dQw4w9WgXcQ */}
+               <iframe 
+                  className="absolute inset-0 w-full h-full"
+                  src="https://www.youtube.com/embed/YOUR_VIDEO_ID?autoplay=1&mute=1&loop=1&controls=0&rel=0&modestbranding=1&playlist=YOUR_VIDEO_ID" 
+                  title="The Art of the Install" 
+                  frameBorder="0" 
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                  allowFullScreen
+               ></iframe>
+            </ScrollReveal>
+          )}
         </section>
       )}
 
